@@ -2,6 +2,7 @@ import json
 import ssl
 from pathlib import Path
 from urllib.request import urlopen
+import re
 
 import certifi
 
@@ -46,3 +47,30 @@ def is_ecoli_mic(measurement):
         or name.startswith("Escherichia coli ")
     )
     return is_ecoli and measurement.get("activityMeasureValue") == "MIC"
+
+def concentration_kind(value):
+    """Classify a concentration without converting it to a label."""
+    if value is None:
+        return "missing"
+
+    text = str(value).strip()
+
+    if not text:
+        return "missing"
+
+    # Decimal numbers, optionally using scientific notation.
+    number = r"(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
+
+    if re.fullmatch(number, text):
+        return "single_number"
+
+    if re.fullmatch(rf"(?:>=|<=|>|<|≥|≤)\s*{number}", text):
+        return "censored"
+
+    if re.fullmatch(rf"{number}\s*[-–]\s*{number}", text):
+        return "range"
+
+    if re.fullmatch(rf"{number}\s*±\s*{number}", text):
+        return "plus_minus"
+
+    return "unrecognized"

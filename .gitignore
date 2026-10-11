@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.env
+
+# Keep datasets local initially.
+data/raw/*
+data/processed/*
