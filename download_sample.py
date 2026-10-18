@@ -1,32 +1,10 @@
 import json
-import ssl
 import time
-from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
-
-import certifi
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent
-RAW_DIR = PROJECT_ROOT / "data" / "raw"
-RAW_DIR.mkdir(parents=True, exist_ok=True)
-
-SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+from data_utils import RAW_DIR, fetch_json, save_json
 
 
-def fetch_json(url):
-    """Download JSON using trusted HTTPS certificates."""
-    with urlopen(url, timeout=30, context=SSL_CONTEXT) as response:
-        return json.load(response)
-
-
-def save_json(path, data):
-    """Save JSON in a readable format."""
-    path.write_text(
-        json.dumps(data, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
 
 
 def main():
