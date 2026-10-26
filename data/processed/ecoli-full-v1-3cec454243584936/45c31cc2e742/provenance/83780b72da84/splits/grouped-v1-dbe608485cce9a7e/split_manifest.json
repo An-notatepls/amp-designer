@@ -1,0 +1,73 @@
+{
+  "spec": {
+    "version": "grouped-v1",
+    "source_sha256": {
+      "broad_candidates.csv": "76ac111af2a6e948f9b0947df8ece963d06183f2805380be319cfd714adef15c",
+      "broad_audit.csv": "23abf84262af77aa9303a2b94aaf23d1fc85eaf94eff8a25ea69bc1ff8de822f",
+      "clinical_only_candidates.csv": "dbe5d009622c0c79b6652eae95a56ab9fa079d26e975234ec5c993baf1bf53c2"
+    },
+    "script_sha256": "db59630606840d732c6970176e1cdcdd1caa8e1ea65511a129044e41dde2d177",
+    "seed": 42,
+    "similarity_fraction": "4/5",
+    "test_group_probability": "1/5",
+    "similarity_method": "1 - unit-cost global Levenshtein distance / longer length",
+    "group_method": "connected components over all unique audit sequences; amidation ignored for grouping",
+    "allocation_method": "reserve clinical-only families; otherwise SHA256(str(seed)+':'+group_id) threshold; independent of labels",
+    "clinical_policy": "all clinical-only identities held out, all related broad examples buffered; exploratory only",
+    "limitations": "Not proof of homology; local motifs may remain shared; family chaining is possible; conditional on curated eligibility"
+  },
+  "prepared_at_utc": "2026-10-19T00:34:26.807567+00:00",
+  "model_fitted_by_this_script": false,
+  "counts": {
+    "train": {
+      "examples": 394,
+      "unique_sequences": 392,
+      "groups": 242,
+      "active": 217,
+      "inactive": 177
+    },
+    "test": {
+      "examples": 71,
+      "unique_sequences": 71,
+      "groups": 47,
+      "active": 34,
+      "inactive": 37
+    },
+    "clinical_exploratory": {
+      "examples": 17,
+      "unique_sequences": 17,
+      "groups": 14,
+      "active": 14,
+      "inactive": 3
+    },
+    "clinical_family_buffer": {
+      "examples": 7,
+      "unique_sequences": 7,
+      "groups": 2,
+      "active": 6,
+      "inactive": 1
+    }
+  },
+  "audit_unique_sequences": 772,
+  "audit_groups": 481,
+  "qualifying_close_pairs": 1468,
+  "largest_audit_group_sequences": 44,
+  "checks": {
+    "identity_partition_unique": true,
+    "no_family_overlap_across_train_test_and_clinical_reservation": true,
+    "all_qualifying_pairs_protected": true,
+    "clinical_families_absent_from_training": true,
+    "primary_train_and_test_have_both_classes": true
+  },
+  "evaluation_rule": "Use train.csv for all fitting/tuning with group-aware CV. Use test.csv only after selecting the model. Clinical metrics are exploratory. Do not train on clinical_family_buffer.csv.",
+  "buffer_note": "Clinical exploratory rows and their buffers may share families, or different amidation states of the same sequence; the entire reservation is disjoint from train and primary test.",
+  "output_sha256": {
+    "train.csv": "9e5461de996dc8bbb34f4bf36ac069b0a8a24ad2f8ecb3f24a5721734a49ffa1",
+    "test.csv": "adeda70db427a3dd9500a0a3f7eba09001d0961d3e57e3434e3ff1bd738ee8a2",
+    "clinical_exploratory.csv": "b0e044c5a9b034816850ee54cdbb1756e85ccefd6f04dac22b09124cd134b329",
+    "clinical_family_buffer.csv": "bf24f9d6828e5d27e366cf027b457d568eafb48e39b315b5a7450c2cd4c6260a",
+    "sequence_groups.csv": "09ebbc9e8d25ecb29245f69732aa4c9f8fc5934bc1f9607a17e1840f095addb9",
+    "split_assignments.csv": "5e798e64a8a149c4825e86127932d439844011b86261c950298ae6c074076439"
+  },
+  "source_attribution": "Derived from DBAASP data, https://dbaasp.org; see project README and DBAASP terms/citation."
+}

@@ -1,0 +1,275 @@
+{
+  "spec": {
+    "version": "physchem-logistic-v1",
+    "split_manifest_sha256": "5bc08d219cb6a86f801eb8d918bc9b6f25ce9875e7d627d31487093567a4e3a3",
+    "train_sha256": "9e5461de996dc8bbb34f4bf36ac069b0a8a24ad2f8ecb3f24a5721734a49ffa1",
+    "script_sha256": "9e84020f8aa9fc2cfec2bf310b8e98b19357b3893b4802fd8b08de46c8257764",
+    "environment": {
+      "python": "3.13.4",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "features": {
+      "length": "Number of residues",
+      "basic_fraction": "Fraction K or R",
+      "acidic_fraction": "Fraction D or E",
+      "histidine_fraction": "Fraction H",
+      "hydrophobic_fraction": "Fraction A, V, I, L, M, F, W or Y (declared grouping)",
+      "aromatic_fraction": "Fraction F, W or Y",
+      "glycine_fraction": "Fraction G",
+      "proline_fraction": "Fraction P",
+      "c_amidated": "1 for recorded C-terminal amidation; otherwise 0",
+      "charge_proxy": "count(K,R) - count(D,E) + amidation; not a pH-specific charge estimate"
+    },
+    "C_values": [
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "cv": {
+      "method": "StratifiedGroupKFold",
+      "n_splits": 5,
+      "shuffle": true,
+      "seed": 42
+    },
+    "selection": "highest mean fold balanced accuracy; exact ties choose smaller C",
+    "probability_threshold": 0.5,
+    "class_weight": null,
+    "example_weighting": "each sequence+amidation identity equal; assay counts not used as weights"
+  },
+  "trained_at_utc": "2026-10-19T00:59:24.531913+00:00",
+  "training_counts": {
+    "examples": 394,
+    "unique_sequences": 392,
+    "groups": 242,
+    "active": 217,
+    "inactive": 177
+  },
+  "dummy_cv": {
+    "balanced_accuracy": {
+      "mean": 0.5,
+      "std_across_folds": 0.0
+    },
+    "accuracy": {
+      "mean": 0.5507952338632698,
+      "std_across_folds": 0.0014609709308750327
+    },
+    "mcc": {
+      "mean": 0.0,
+      "std_across_folds": 0.0
+    },
+    "roc_auc": {
+      "mean": 0.5,
+      "std_across_folds": 0.0
+    },
+    "average_precision": {
+      "mean": 0.5507952338632698,
+      "std_across_folds": 0.0014609709308750327
+    },
+    "sensitivity": {
+      "mean": 1.0,
+      "std_across_folds": 0.0
+    },
+    "specificity": {
+      "mean": 0.0,
+      "std_across_folds": 0.0
+    }
+  },
+  "logistic_candidates": [
+    {
+      "C": 0.01,
+      "cv": {
+        "balanced_accuracy": {
+          "mean": 0.7346151304359239,
+          "std_across_folds": 0.08968294774905504
+        },
+        "accuracy": {
+          "mean": 0.7447165169020111,
+          "std_across_folds": 0.08472053620449191
+        },
+        "mcc": {
+          "mean": 0.4809037923625869,
+          "std_across_folds": 0.17448326438817074
+        },
+        "roc_auc": {
+          "mean": 0.754533567336235,
+          "std_across_folds": 0.09419845718289867
+        },
+        "average_precision": {
+          "mean": 0.7764331278145882,
+          "std_across_folds": 0.09882752531910134
+        },
+        "sensitivity": {
+          "mean": 0.8345947850599014,
+          "std_across_folds": 0.04465515781417469
+        },
+        "specificity": {
+          "mean": 0.6346354758119465,
+          "std_across_folds": 0.14230951727459823
+        }
+      }
+    },
+    {
+      "C": 0.1,
+      "cv": {
+        "balanced_accuracy": {
+          "mean": 0.7160440531849559,
+          "std_across_folds": 0.10107005479214475
+        },
+        "accuracy": {
+          "mean": 0.7214239162634541,
+          "std_across_folds": 0.09653940661594797
+        },
+        "mcc": {
+          "mean": 0.43975025558683767,
+          "std_across_folds": 0.20163586313402615
+        },
+        "roc_auc": {
+          "mean": 0.7651091090779873,
+          "std_across_folds": 0.08081357060294012
+        },
+        "average_precision": {
+          "mean": 0.7773435382869249,
+          "std_across_folds": 0.08732509825947497
+        },
+        "sensitivity": {
+          "mean": 0.7696311956777073,
+          "std_across_folds": 0.0979116568255683
+        },
+        "specificity": {
+          "mean": 0.6624569106922047,
+          "std_across_folds": 0.1712518980177114
+        }
+      }
+    },
+    {
+      "C": 1.0,
+      "cv": {
+        "balanced_accuracy": {
+          "mean": 0.6906587031894829,
+          "std_across_folds": 0.10122062092498534
+        },
+        "accuracy": {
+          "mean": 0.6985489286066949,
+          "std_across_folds": 0.09139459591784162
+        },
+        "mcc": {
+          "mean": 0.39138512520621915,
+          "std_across_folds": 0.20074221956706575
+        },
+        "roc_auc": {
+          "mean": 0.7659744391156841,
+          "std_across_folds": 0.06949077483834969
+        },
+        "average_precision": {
+          "mean": 0.7689519134606346,
+          "std_across_folds": 0.07801975632264958
+        },
+        "sensitivity": {
+          "mean": 0.7693187690862109,
+          "std_across_folds": 0.1004265009008053
+        },
+        "specificity": {
+          "mean": 0.6119986372927549,
+          "std_across_folds": 0.2284788649934241
+        }
+      }
+    },
+    {
+      "C": 10.0,
+      "cv": {
+        "balanced_accuracy": {
+          "mean": 0.6861108995719118,
+          "std_across_folds": 0.0994784615209499
+        },
+        "accuracy": {
+          "mean": 0.6935458016523486,
+          "std_across_folds": 0.08921849532341214
+        },
+        "mcc": {
+          "mean": 0.3809061326106223,
+          "std_across_folds": 0.19573669727480453
+        },
+        "roc_auc": {
+          "mean": 0.7621122521823616,
+          "std_across_folds": 0.06795823235551961
+        },
+        "average_precision": {
+          "mean": 0.7640167423438452,
+          "std_across_folds": 0.07902545607504492
+        },
+        "sensitivity": {
+          "mean": 0.7602231618510688,
+          "std_across_folds": 0.09636810743941066
+        },
+        "specificity": {
+          "mean": 0.6119986372927549,
+          "std_across_folds": 0.2284788649934241
+        }
+      }
+    }
+  ],
+  "selected_C": 0.01,
+  "selected_logistic_cv": {
+    "balanced_accuracy": {
+      "mean": 0.7346151304359239,
+      "std_across_folds": 0.08968294774905504
+    },
+    "accuracy": {
+      "mean": 0.7447165169020111,
+      "std_across_folds": 0.08472053620449191
+    },
+    "mcc": {
+      "mean": 0.4809037923625869,
+      "std_across_folds": 0.17448326438817074
+    },
+    "roc_auc": {
+      "mean": 0.754533567336235,
+      "std_across_folds": 0.09419845718289867
+    },
+    "average_precision": {
+      "mean": 0.7764331278145882,
+      "std_across_folds": 0.09882752531910134
+    },
+    "sensitivity": {
+      "mean": 0.8345947850599014,
+      "std_across_folds": 0.04465515781417469
+    },
+    "specificity": {
+      "mean": 0.6346354758119465,
+      "std_across_folds": 0.14230951727459823
+    }
+  },
+  "intercept": 0.21855301389942286,
+  "heldout_csvs_opened": [],
+  "final_test_evaluated": false,
+  "checks": {
+    "split_training_hash_verified": true,
+    "group_disjoint_cv": true,
+    "both_classes_in_each_fold": true,
+    "each_row_validated_once": true,
+    "scaling_inside_cv_pipeline": true
+  },
+  "limitations": [
+    "Selected CV scores reuse folds for model selection and are optimistic development estimates.",
+    "Fold standard deviations are descriptive, not confidence intervals.",
+    "Features are correlated; coefficients describe this fitted model, not causal residue effects.",
+    "Probability outputs are uncalibrated model scores, not proven biological success probabilities.",
+    "Similarity groups do not guarantee all biological relationships or shared study effects are isolated.",
+    "The curated threshold is an operational label, not a clinical breakpoint or evidence of bacterial killing."
+  ],
+  "source_attribution": "Derived from DBAASP data, https://dbaasp.org; see project README for citation and terms.",
+  "output_sha256": {
+    "coefficients.csv": "35beab40c6c55a7119b82b3ccd2ef4016901c8544a77d6aed45e7abd38c3f6ca",
+    "cv_folds.csv": "e149356012f45f2213ffb14325c4e8f50edf78317f0d7764d1ca47ff5511bd44",
+    "cv_predictions.csv": "9d0ff6c58deae08e1cacd7d67becc6ffd15556e6a90dd07a52518f6bfaaefbb0",
+    "cv_scores.csv": "0f0cd093366aa29cb20606bbfb638ff7de4ed858a8ddd5e90ca05066d498326a",
+    "feature_definitions.json": "71276b9be6932551de5ad5b799a2d3f00433cdd8befa0143e010c28ede65b372",
+    "model.joblib": "3bab6bb3657bb2d6a54a1c5bb35d73188238647fa34bfcbc8202cef69a7b26f6",
+    "train_features.csv": "8447da5455ec72b36c937bd335793ae1bf0d973b7ac18c64e9be001a2287650c"
+  }
+}
