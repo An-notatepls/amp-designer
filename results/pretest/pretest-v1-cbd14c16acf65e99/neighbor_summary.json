@@ -1,0 +1,35 @@
+{
+  "test_identities": 71,
+  "training_unique_sequences": 392,
+  "subset_counts": {
+    "global60_strict": 45,
+    "local60_strict": 32,
+    "combined60_strict": 32
+  },
+  "global_similarity_histogram": {
+    "[0,.2)": 0,
+    "[.2,.4)": 10,
+    "[.4,.6)": 35,
+    "[.6,.8)": 26,
+    "[.8,1]": 0,
+    "no_qualifying_alignment": 0
+  },
+  "unrestricted_local_identity_histogram": {
+    "[0,.2)": 0,
+    "[.2,.4)": 0,
+    "[.4,.6)": 0,
+    "[.6,.8)": 0,
+    "[.8,1]": 71,
+    "no_qualifying_alignment": 0
+  },
+  "qualified_local_identity_histogram": {
+    "[0,.2)": 0,
+    "[.2,.4)": 5,
+    "[.4,.6)": 27,
+    "[.6,.8)": 26,
+    "[.8,1]": 13,
+    "no_qualifying_alignment": 0
+  },
+  "test_identities_with_incomplete_optimal_tie_scans": 0,
+  "subset_class_counts": "not computed: held-out outcomes remain sealed"
+}

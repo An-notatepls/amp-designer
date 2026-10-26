@@ -1,0 +1,3 @@
+-r requirements-baseline.txt
+# Explicit alignment settings and recorded dependency version underpin the audit.
+biopython==1.86

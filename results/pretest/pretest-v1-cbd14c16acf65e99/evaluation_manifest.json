@@ -1,0 +1,198 @@
+{
+  "spec": {
+    "version": "pretest-v1",
+    "policy": {
+      "decision_stage": "chosen after development comparisons, before test outcomes; not retrospective preregistration",
+      "primary_model": "charge_corrected_amidation",
+      "primary_C": 0.1,
+      "primary_features": [
+        "charge_proxy",
+        "c_amidated"
+      ],
+      "charge_proxy": "count(K,R) - count(D,E) + int(c_amidated)",
+      "prediction_threshold": 0.5,
+      "prediction_tie": "score exactly 0.5 predicts inactive, matching sklearn logistic decision > 0",
+      "primary_metric": "balanced_accuracy",
+      "reported_models_C": {
+        "dummy": null,
+        "charge_uncorrected": 0.1,
+        "charge_corrected": 1.0,
+        "charge_corrected_amidation": 0.1,
+        "composition": 0.1,
+        "physchem": 0.01
+      },
+      "secondary_models_C": {
+        "dummy": null,
+        "charge_uncorrected": 0.1,
+        "charge_corrected": 1.0,
+        "composition": 0.1,
+        "physchem": 0.01
+      },
+      "secondary_metrics": [
+        "roc_auc",
+        "average_precision",
+        "mcc",
+        "accuracy",
+        "precision",
+        "sensitivity",
+        "specificity",
+        "confusion_counts"
+      ],
+      "ranking_budgets": [
+        5,
+        10,
+        20
+      ],
+      "ranking_status": "illustrative candidate budgets fixed before inspecting P@k; not a validated lab budget",
+      "ranking_modes": [
+        "all_identities",
+        "one_representative_per_80pct_family"
+      ],
+      "ranking_ties": "round probabilities to 12 decimals; expected hits from uniform selection within a boundary tie",
+      "family_representative": "highest rounded probability; ties choose lexicographically smallest sequence+amidation identity, ignoring labels",
+      "local_alignment": {
+        "mode": "local",
+        "matrix": "BLOSUM62",
+        "open_gap_score": -10.0,
+        "extend_gap_score": -0.5,
+        "identity_denominator": "all alignment columns including internal gaps",
+        "coverage_denominator": "aligned residue pairs divided by peptide length; report both peptides",
+        "minimum_aligned_residue_pairs": 10,
+        "minimum_shorter_peptide_coverage": 0.8,
+        "maximum_optimal_alignments_per_pair": 100,
+        "tie_policy": "scan up to 100 score-optimal alignments; an incomplete tie scan excludes the test identity from local/combined strict subsets"
+      },
+      "subsets": {
+        "overall": "all original primary test identities",
+        "global60_strict": "maximum direct global edit similarity to training is strictly below 0.60",
+        "local60_strict": "no detected coverage-qualified score-optimal local match has identity >=0.60; all optimal-alignment tie scans complete",
+        "combined60_strict": "intersection of global60_strict and local60_strict"
+      },
+      "primary_analysis": "primary model, original overall test; subsets and other models are secondary, not selection rules",
+      "final_intervals": {
+        "method": "paired percentile whole-80pct-family bootstrap of fixed test predictions",
+        "draws": 5000,
+        "seed": 42,
+        "level": 0.95,
+        "minimum_groups_for_auc_interval": 10,
+        "minimum_examples_per_class_for_auc_interval": 5,
+        "one_class_draws": "omit consistently across compared models; disclose counts; suppress interval if >10% omitted"
+      },
+      "small_subsets": "always report n, classes and families; AUROC undefined with one class; suppress AUROC intervals below declared support limits",
+      "clinical_analysis": "17 clinical-only identities are exploratory; only three inactive; do not use clinical buffer for training or selection",
+      "selection_rule": "evaluate the fixed list once; select no feature set, C, cutoff or grouping threshold from test/clinical performance",
+      "power": "71 test identities in 47 families provide a limited final check, not a powered ranking of small feature-set differences; no promised CI width"
+    },
+    "train_sha256": "9e5461de996dc8bbb34f4bf36ac069b0a8a24ad2f8ecb3f24a5721734a49ffa1",
+    "split_manifest_sha256": "5bc08d219cb6a86f801eb8d918bc9b6f25ce9875e7d627d31487093567a4e3a3",
+    "comparison_report_sha256": "9cd0ae0287a29117db3b7c561944877b32ad47d545449f939a86827da44b7024",
+    "source_sha256": {
+      "models.joblib": "115fdea3c1b8dd6aeb15eb283fa01a6c9f5a4dd2d22205684a69af1ecb2ccbac",
+      "selected_oof_predictions.csv": "439b23dfde2b0cf2ac20b2eb80d5ad40c51f2e52bdd2bba82115ed26c98aa3dd",
+      "cv_folds.csv": "e149356012f45f2213ffb14325c4e8f50edf78317f0d7764d1ca47ff5511bd44"
+    },
+    "code_sha256": {
+      "prepare_evaluation.py": "f72ba6fa9aa3b062b78c4a884d558d2b585acd4c0231876c3d7caf45cce013b0",
+      "train_baseline.py": "9e84020f8aa9fc2cfec2bf310b8e98b19357b3893b4802fd8b08de46c8257764",
+      "compare_features.py": "688811566fbf7f949b0b290ac979dc308d62043251dc82f42ecdab9a973a9a7d",
+      "prepare_splits.py": "db59630606840d732c6970176e1cdcdd1caa8e1ea65511a129044e41dde2d177"
+    },
+    "environment": {
+      "python": "3.13.4",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0",
+      "biopython": "1.86"
+    },
+    "development_bootstrap_draws": 2000,
+    "development_bootstrap_seed": 42
+  },
+  "prepared_at_utc": "2026-10-26T02:08:55.843179+00:00",
+  "split_counts": {
+    "train": {
+      "examples": 394,
+      "unique_sequences": 392,
+      "groups": 242,
+      "active": 217,
+      "inactive": 177
+    },
+    "test": {
+      "examples": 71,
+      "unique_sequences": 71,
+      "groups": 47,
+      "active": 34,
+      "inactive": 37
+    },
+    "clinical_exploratory": {
+      "examples": 17,
+      "unique_sequences": 17,
+      "groups": 14,
+      "active": 14,
+      "inactive": 3
+    },
+    "clinical_family_buffer": {
+      "examples": 7,
+      "unique_sequences": 7,
+      "groups": 2,
+      "active": 6,
+      "inactive": 1
+    }
+  },
+  "neighbor_summary": {
+    "test_identities": 71,
+    "training_unique_sequences": 392,
+    "subset_counts": {
+      "global60_strict": 45,
+      "local60_strict": 32,
+      "combined60_strict": 32
+    },
+    "global_similarity_histogram": {
+      "[0,.2)": 0,
+      "[.2,.4)": 10,
+      "[.4,.6)": 35,
+      "[.6,.8)": 26,
+      "[.8,1]": 0,
+      "no_qualifying_alignment": 0
+    },
+    "unrestricted_local_identity_histogram": {
+      "[0,.2)": 0,
+      "[.2,.4)": 0,
+      "[.4,.6)": 0,
+      "[.6,.8)": 0,
+      "[.8,1]": 71,
+      "no_qualifying_alignment": 0
+    },
+    "qualified_local_identity_histogram": {
+      "[0,.2)": 0,
+      "[.2,.4)": 5,
+      "[.4,.6)": 27,
+      "[.6,.8)": 26,
+      "[.8,1]": 13,
+      "no_qualifying_alignment": 0
+    },
+    "test_identities_with_incomplete_optimal_tie_scans": 0,
+    "subset_class_counts": "not computed: held-out outcomes remain sealed"
+  },
+  "heldout_csvs_opened": [],
+  "final_test_evaluated": false,
+  "protocol_commit_required_before_test": true,
+  "notes": [
+    "No fitted model was changed or selected from held-out outcomes.",
+    "This is a development-informed pre-test protocol, not preregistration before training.",
+    "Local similarity is a diagnostic under declared scoring/coverage rules, not proof of homology or independence.",
+    "OOF precision intervals are conditional, selection-affected database diagnostics, not prospective wet-lab success rates."
+  ],
+  "primary_model_sha256": "5573f24eb93693b207b8e356c7e842433c1f9f26b08fd1fea6039dc85e31680e",
+  "output_sha256": {
+    "evaluation_protocol.md": "bd633b2a9fa0101570bb6f2fb727371c6e1070127013e4d1c71fcba52cca2b5c",
+    "neighbor_summary.json": "92d27f32996819c1a32700821ae05352a27e3e0199ac57637becb7df2257f0a8",
+    "oof_operating_points.csv": "98ed1ca72d23b54a06087f168f4de12306f6370873baa79d4963cd2cbef97586",
+    "oof_precision_at_k.csv": "fdc6a3507458e85e9bfe31f949a0a05910a3c0bc4cab8bee47a47fdcd46c12cc",
+    "oof_precision_at_k_by_fold.csv": "4dcc2f0627c7cfe26a0c5bd3d6df85bc33f8d593ee025c05f082b878325c86b3",
+    "primary_model.joblib": "5573f24eb93693b207b8e356c7e842433c1f9f26b08fd1fea6039dc85e31680e",
+    "test_neighbor_audit.csv": "6198740bbc9b7fd87c1cc706eddb28ae7ffdcd22c9247e5f6211851e66938098",
+    "test_subset_membership.csv": "69f43ae81eceb4eb5191cdce1514cfe349ebad1ddb96479d4731f426f7415ffd"
+  }
+}
