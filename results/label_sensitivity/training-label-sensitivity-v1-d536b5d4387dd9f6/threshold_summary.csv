@@ -1,0 +1,7 @@
+scope,threshold_uM,identities_in_scope,original_training_identities,eligible_identities,eligible_sequences,eligible_groups,active,inactive,active_fraction_among_eligible,mixed,ambiguous,needs_note_review,no_remaining_groups,definite_label_changes_from_32,newly_eligible_from_32,excluded_from_original_training
+original_ready_training,16,394,394,377,375,233,170,207,0.4509283819628647,13,4,0,0,30,0,17
+original_ready_training,32,394,394,394,392,242,217,177,0.550761421319797,0,0,0,0,0,0,0
+original_ready_training,64,394,394,380,378,232,242,138,0.6368421052631579,1,13,0,0,25,0,14
+all_training_assigned_audit_identities,16,639,394,392,390,245,170,222,0.4336734693877551,53,4,190,0,30,15,17
+all_training_assigned_audit_identities,32,639,394,394,392,242,217,177,0.550761421319797,41,11,193,0,0,0,0
+all_training_assigned_audit_identities,64,639,394,394,392,239,256,138,0.649746192893401,16,19,210,0,25,14,14
