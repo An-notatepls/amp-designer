@@ -26,8 +26,9 @@ The walkthrough is implemented with saved outputs and six figures. Tests and
 training-only modeling reproduction are supported by committed, fingerprint-
 verified inputs. The original-model export, original raw ID manifest and observed
 collection-date metadata still require the local export described below.
-Normal-kernel notebook Run All and the first hosted CI run remain to be checked.
-A complete live DBAASP rebuild has not been demonstrated.
+Normal-kernel notebook Run All remains to be checked. Hosted CI on Python
+3.13.4 passed all 63 tests, fingerprint verification and the full training-only
+numerical reproduction. A complete live DBAASP rebuild has not been demonstrated.
 
 ## Data and primary cohort
 
@@ -103,7 +104,7 @@ The last command reproduces training-only baseline/feature comparisons in a
 new output directory and compares numerical results; it does not repeat final
 evaluation or change original reports. Locally, all 63 tests and the full
 numeric reproduction passed on Python 3.12.14 with the recorded numerical-library
-versions. Exact Python 3.13.4 is the pinned hosted/original-machine check.
+versions. The full check also passed in [hosted CI on Python 3.13.4](https://github.com/An-notatepls/amp-designer/actions/runs/40631386045).
 
 Read the [reproduction guide](docs/reproduce.md) for the three reproducibility
 levels, dependency roles, tests and the separate notebook environment.

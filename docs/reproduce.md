@@ -43,9 +43,10 @@ synthetic except a fingerprint consistency check over committed artifacts.
 The verifier checks the exact frozen partitions, provenance inputs, source
 fingerprints and present report exports. It lists uncommitted generated files
 separately; their absence does not mean that every original artifact is present.
-CI runs on Python 3.13.4. Its first hosted run remains unverified until GitHub
-Actions reports it. Local authoring tests used Python 3.12.14 with the recorded
-numerical-library versions, and all 63 passed.
+Hosted CI on Ubuntu 24.04 / Python 3.13.4 passed all 63 tests, frozen-input
+verification and the full modeling reproduction; see [the successful run](https://github.com/An-notatepls/amp-designer/actions/runs/40631386045).
+Local authoring tests also passed on Python 3.12.14 with the recorded numerical
+library versions.
 
 ## Level 2: training-only modeling reproduction
 
@@ -69,8 +70,8 @@ explicitly different from interpreting their outcomes for model selection.
 
 Full local reproduction matched the committed numeric results on Python
 3.12.14 with numpy 2.3.5, scipy 1.17.0, sklearn 1.8.0, joblib 1.5.3 and
-threadpoolctl 3.6.0. Exact 3.13.4 execution remains the hosted/original-machine
-check. Floating-point platform variation can produce differences; the verifier
+threadpoolctl 3.6.0. The same full numerical reproduction also passed hosted CI with Python
+3.13.4 on Ubuntu 24.04. Floating-point platform variation can produce differences; the verifier
 fails rather than widening tolerance silently. New run directory names,
 timestamps and serialized model bytes need not match original report hashes.
 Original hash-linked reports are never hand-edited or overwritten.
