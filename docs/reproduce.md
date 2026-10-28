@@ -1,144 +1,199 @@
-# Reproduction and prediction usage
+# Reproduction and inference
 
-Run commands from `amp-designer`, not from inside `modeling`. This guide refers
-to the recorded local experiment. An ordinary clone does not include ignored
-raw/processed data or fitted joblib bundles. Complete clean-checkout data and
-model recovery is still a release task; do not claim it is already available.
+Updated 2026-10-28. Commands run from the repository root. The fixed experiment
+is preserved; this guide does not replace original reports, rewrite history,
+select another model or reopen final outcomes for tuning.
 
-## Environment and tests
+## Environment roles
 
-The recorded model environment is Python 3.13.4, numpy 2.3.5, scipy 1.17.0,
-scikit-learn 1.8.0, joblib 1.5.3, threadpoolctl 3.6.0 and Biopython 1.86.
-Use the existing environment; do not upgrade it for this frozen experiment.
-For a separate reconstruction environment with the matching Python:
+`.python-version` records **Python 3.13.4**, the original experiment interpreter.
+The model/parameter exporter requires the original frozen environment; the
+summary notebook has a separate environment. Dependencies are layered:
+
+| File | Purpose |
+|---|---|
+| `requirements.txt` | Complete current data/model workflow: certifi plus diagnostic/model requirements |
+| `modeling/requirements-baseline.txt` | Pinned numerical/modeling libraries |
+| `modeling/requirements-diagnostics.txt` | Baseline requirements plus pinned Biopython for alignment/data chemistry |
+| `notebooks/requirements-notebook.txt` | Separate notebook display/execution environment |
+
+The requirements pin direct dependencies, not every transitive dependency.
+For a fresh modeling environment with the recorded Python:
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r modeling/requirements-diagnostics.txt
+./.venv/bin/python -m pip install -r requirements.txt
 ```
 
-Data collection tools also require their existing dependencies (including
-certifi). Complete data-tool dependency pins remain a release task.
+Confirm `python3 --version` is 3.13.4 first if reproducing the original
+interpreter exactly. Do not upgrade an existing frozen modeling environment
+merely to display the notebook.
+
+## Level 1: offline tests and integrity
 
 ```bash
-./.venv/bin/python modeling/test_predict.py -v
+./.venv/bin/python -m unittest discover -s tests -p 'test_*.py' -v
+./.venv/bin/python -m unittest test_prepare_splits.py -v
+./.venv/bin/python -m unittest discover -s modeling -p 'test_*.py' -v
+./.venv/bin/python tools/verify_release.py
 ```
 
-Inference tests use synthetic data only. Existing split, baseline, comparison,
-pretest and evaluator tests can be run with their individual test scripts.
-The prediction test imports `compare_features.py` to check exact feature parity.
+There are 63 tests, including seven new release checks. Test fixtures are
+synthetic except a fingerprint consistency check over committed artifacts.
+The verifier checks the exact frozen partitions, provenance inputs, source
+fingerprints and present report exports. It lists uncommitted generated files
+separately; their absence does not mean that every original artifact is present.
+CI runs on Python 3.13.4. Its first hosted run remains unverified until GitHub
+Actions reports it. Local authoring tests used Python 3.12.14 with the recorded
+numerical-library versions, and all 63 passed.
 
-## Predict one sequence
+## Level 2: training-only modeling reproduction
 
-Keep the original, trusted `primary_model.joblib` and `evaluation_manifest.json`
-in `results/pretest/pretest-v1-cbd14c16acf65e99/`. Do not replace the frozen
-model with a newly fit or all-data model. joblib uses pickle; load only trusted
-artifacts you produced. Fingerprint checks detect changes relative to the local
-manifest, but do not authenticate an arbitrary model/manifest downloaded together.
+The original `train.csv`, `test.csv`, clinical and buffer partitions are now
+included as exact bytes matching `split_manifest.json`. The three provenance
+tables also match that manifest's source hashes. Do not replace them with newly
+queried or relabeled data. The existing `split_assignments.csv` has no labels;
+it is assignment metadata rather than a complete training dataset.
+
+```bash
+./.venv/bin/python tools/reproduce_modeling.py
+```
+
+This uses the frozen training and comparison scripts. It writes a new run under
+`results/reproduced/`, checks exact saved CV folds and selected C, and compares
+baseline CV scores/coefficients, the feature ladder and paired bootstrap
+intervals at numerical tolerance 1e-10. It also runs the existing grouping
+sensitivity diagnostic. No test/clinical outcome files are opened by training.
+The initial integrity verifier hashes them as immutable inputs, which is
+explicitly different from interpreting their outcomes for model selection.
+
+Full local reproduction matched the committed numeric results on Python
+3.12.14 with numpy 2.3.5, scipy 1.17.0, sklearn 1.8.0, joblib 1.5.3 and
+threadpoolctl 3.6.0. Exact 3.13.4 execution remains the hosted/original-machine
+check. Floating-point platform variation can produce differences; the verifier
+fails rather than widening tolerance silently. New run directory names,
+timestamps and serialized model bytes need not match original report hashes.
+Original hash-linked reports are never hand-edited or overwritten.
+
+For a quicker check:
+
+```bash
+./.venv/bin/python tools/reproduce_modeling.py --baseline-only
+```
+
+The completed final metrics are preserved under
+`results/evaluation/holdout-evaluation-v1-836296044b94ac62/`. This reproduction
+command does not rerun final evaluation. These public/evaluated outcomes are
+not a new blind test for future model development.
+
+## The read-only walkthrough
+
+Open `notebooks/project_walkthrough.ipynb` to read its saved tables and figures.
+It runs entirely from `notebooks/data/walkthrough/`, with no database, model,
+network access or fitting. For execution, create a separate environment:
+
+```bash
+python3 -m venv .venv-notebook
+./.venv-notebook/bin/python -m pip install -r notebooks/requirements-notebook.txt
+```
+
+Select that interpreter as the VS Code notebook kernel and use Run All. The
+notebook has 12 code cells and six figure outputs. Its code was validated in
+sequential in-process IPython because authoring-kernel socket binding was
+unavailable; local normal-kernel Run All remains to be confirmed.
+
+## Export the original model and raw-cohort provenance
+
+The exact original primary joblib bundle, raw 2,217-ID manifest, cached listing
+timestamps and complete measurement/build reports remain on the original Mac.
+They must not be recreated from the now-known test results. The export tool
+checks them against frozen fingerprints before producing portable files:
+
+```bash
+./.venv/bin/python tools/export_local_release.py
+```
+
+This creates a new `amp-local-release-export.zip`. It contains:
+
+- A JSON scaler/logistic parameter model and its checksum manifest, exported
+  from the exact evaluated primary model. A 204-point charge/amidation grid covering the supported
+  feature combinations are checked against its decision function without fitting.
+- The unmodified original full ID manifest under `data/manifests/ecoli-full-v1/`.
+- Original measurement, build and provenance files with unchanged fingerprints.
+- The listing/manifest timestamp values actually present in the local cache.
+  Individual record-download timestamps were not saved and remain unknown.
+
+The exporter only loads the trusted original local joblib artifact. Do not
+load pickle/joblib from an untrusted source. Keep the ZIP outside staging;
+review and add its extracted intended files explicitly. Uploading this ZIP is
+the remaining handoff needed to finish the original-model/raw-cohort release.
+There is no invented release model or backdated dataset access date in this branch.
+
+After exporting and placing the portable files under `artifacts/model-v1/`:
+
+```bash
+python3 modeling/predict_portable.py --sequence AAAAAAAAAA --unmodified
+```
+
+This inference command needs only Python's standard library, reads JSON rather
+than pickle, checks the model checksum, and never fits a model. Before that
+export is installed, it reports a missing artifact rather than making up a
+prediction. Scores are uncalibrated and do not establish experimental activity.
+The synthetic sequence demonstrates syntax only. Use `--amidated` when applicable;
+canonical uppercase 10–50-residue monomers and the supported chemistry are required.
+
+Your existing local model command remains available unchanged:
 
 ```bash
 ./.venv/bin/python modeling/predict.py --sequence AAAAAAAAAA --unmodified
-./.venv/bin/python modeling/predict.py --sequence AAAAAAAAAA --amidated
 ```
 
-These synthetic inputs demonstrate syntax, not recommended candidates. The
-tool requires a known terminal state; it does not infer chemistry from sequence.
-Use only canonical uppercase 10–50-residue monomers without additional chemistry.
-It cannot verify D-residues, bonds or chemical modifications from sequence alone.
+Its batch mode takes a CSV with `sequence,c_amidated` and states exactly
+`True` or `False`, plus an optional new `--output` CSV path.
 
-The output includes a charge proxy, model probability, binary prediction,
-activity definition and model fingerprint. A model probability is not a
-validated confidence estimate or an experimental success rate. The model can
-assign the same score to many unrelated peptides with identical features; this
-is not a generator or a toxicity/selectivity predictor. It does not calculate
-sequence novelty to the training set.
+## Level 3: best-effort DBAASP rebuild
 
-The default pretest directory can be overridden with `--pretest-dir`. The tool
-requires the model's original numerical-library environment and training-feature
-source fingerprint. Biopython is not used by inference itself. Invalid sequences,
-unknown chemistry, changed model bytes and existing output files are rejected.
+**Not yet demonstrated from a clean clone.** The frozen raw manifest must first
+be exported as above. Per-record download dates cannot be recovered from the
+current cache if they were never recorded. Documentation/export dates and file
+modification times must not be substituted for retrieval dates.
 
-## Predict a CSV
-
-Create a CSV with explicit chemistry for every row:
-
-```csv
-sequence,c_amidated
-AAAAAAAAAA,False
-AAAAAAAAAA,True
-```
+Once available, copy the manifest's exact bytes into the original
+`data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json` location without
+replacing existing files. Then the original commands are:
 
 ```bash
-./.venv/bin/python modeling/predict.py --input-csv peptides.csv --output predictions.csv
-```
-
-CSV states must be exactly `True` or `False`. Extra input columns are ignored
-and not propagated. Output rows preserve input order, including duplicates.
-The output path's parent folder must exist; an existing file is not overwritten.
-
-## Recorded data-to-model workflow
-
-The full raw manifest is
-`data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json`.
-Its selected cached records must exist. Manifest preparation and download
-scripts are `prepare_pilot.py`, `prepare_full.py` and `download_pilot.py`;
-`audit_pilot.py` accepts full-cohort manifests despite its historical name.
-Use their `--help` for collection arguments. A fresh live query does not recreate
-the saved historical collection.
-
-```bash
+python download_pilot.py "data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json"
 python audit_pilot.py "data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json"
+python audit_core.py "data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json"
 python build_labels.py "data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json" --threshold 32 --note-reviews data/curation/full_note_reviews.csv
 ```
 
-Use the actual output directory printed by the label builder as `LABEL_DIR`,
-then the printed provenance path as `COHORT_DIR`. The following are shell
-variables assigned to the recorded local paths; rebuilt fingerprints can differ.
+Use the actual label folder printed, then run `build_provenance.py` with that
+folder, `--threshold 32` and the same review file. `prepare_pilot.py` prepares a
+new random pilot; `prepare_full.py` expands its saved listing. Those are new
+collection workflows, not historical reproduction of the existing cohort.
 
-```bash
-LABEL_DIR="data/processed/ecoli-full-v1-3cec454243584936/45c31cc2e742"
-COHORT_DIR="$LABEL_DIR/provenance/83780b72da84"
-SPLIT_DIR="$COHORT_DIR/splits/grouped-v1-dbe608485cce9a7e"
-```
+The current downloader validates cached IDs/structure, resumes, retries and
+publishes complete immutable JSON files. Its historical names are retained for
+compatibility. Use its `--help`; do not mix exploratory and manifest-defined files.
+For a background download, redirect output to a new log and never start two
+writers for the same manifest. Ctrl+C preserves completed validated records.
 
-The stage order and command shapes are:
+DBAASP records can change or disappear. Compare new record bytes with the
+original build report's `record_sha256` mapping. A mismatch is source drift,
+not a reason to replace the frozen experiment or silently alter expected hashes.
+A current crawl cannot guarantee a byte-identical historical snapshot.
 
-```bash
-python build_provenance.py "$LABEL_DIR" --note-reviews data/curation/full_note_reviews.csv --threshold 32
-python prepare_splits.py "$COHORT_DIR"
-python modeling/train_baseline.py "$SPLIT_DIR" --results-root results/baselines
-```
+## History and data terms
 
-Use the baseline output actually printed by that run:
+The pretest protocol was committed in b884ffe and evaluator in 387a4f5, before
+final results in 526f231. The runtime marker was created at evaluation start
+and committed with results. Preserve that history; directory names alone do
+not establish chronology. No historical commits or report hashes are rewritten.
 
-```bash
-python modeling/compare_features.py "$SPLIT_DIR" --baseline-dir "results/baselines/physchem-logistic-v1-b8379a4f32704165" --results-root results/comparisons
-python modeling/prepare_evaluation.py "$SPLIT_DIR" --comparison-dir "results/comparisons/feature-comparison-v1-3c0530a63f1c77d0" --results-root results/pretest
-python modeling/check_label_sensitivity.py "$SPLIT_DIR" --note-reviews data/curation/full_note_reviews.csv
-```
-
-These commands explain the pipeline; do not regenerate source bundles merely
-to improve the evaluated experiment. The frozen pretest protocol, subset
-membership and evaluator were committed before final evaluation. Recreating
-the historical chronology requires the preserved commits/artifacts; a new
-pretest run made after seeing results cannot retroactively preregister choices.
-
-The final evaluator has already been run for this experiment. Its completed
-outputs are the authoritative results. Preserve them; no command is needed to
-repeat model selection or reopen the outcomes. Identical completed evaluator
-runs verify and reuse cached results. `--resume` is for an interrupted identical
-run, not a way to change settings after results are known.
-
-## Tracked versus local artifacts
-
-Commit source, tests, documentation, reviewed decisions, dependency specs,
-fixed split definitions, saved CV assignments, pretest protocol/subsets and small
-result reports. Raw caches, cleaned data tables and joblib models remain local
-under current ignore rules. Preserve original evaluation predictions locally
-for audit; decide data redistribution separately under the source terms.
-
-A future release must supply an explicit trusted model/data recovery mechanism,
-record actual collection dates from manifests/logs, complete dependency pins,
-and add a code license. Dataset access dates and the source data terms are
-separate from code licensing and documentation-update dates.
+Original code is MIT licensed. Derived DBAASP tables retain attribution and
+source-data terms; see `data/README.md`. The pilot review CSV is retained as
+historical curation evidence; the active build uses the full review file.
+Obsolete exploratory code was removed from the current tree and remains in Git
+history. The active manifest-aware audit commands and test dependencies remain.

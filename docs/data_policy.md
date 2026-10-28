@@ -1,6 +1,6 @@
 # Data preparation and labeling policy
 
-**Version: v0.1 — frozen for the reported experiment. Documentation updated: 2026-10-27.**
+**Version: v0.1 — frozen for the reported experiment. Documentation updated: 2026-10-28.**
 
 The fixed sequence-group split, primary model and evaluation protocol have now
 been used for final evaluation. Pending reviews remain excluded; the underlying
@@ -491,11 +491,12 @@ review decisions and selected small result summaries. The fixed split's
 explicitly tracked exceptions under the ignored processed-data tree. Baseline
 `cv_folds.csv` and run reports support the shared-fold comparison.
 
-Raw records/listing caches, cleaned datasets, feature/prediction exports and
-fitted `.joblib` artifacts are generated locally. Reports may hash generated
-files that are not committed; a fresh clone does not provide every run file.
-Data-recovery instructions, complete data-tool dependency pins and retrieval
-dates remain release tasks. Do not claim full clean-checkout reproduction yet.
+The four frozen partition CSVs and three source provenance tables are now
+tracked with fingerprints checked against the original manifest. Training-only
+modeling reproduction compares their numerical results without rewriting reports.
+Raw records/listing caches and fitted joblib artifacts remain local. The portable
+original-model export and raw-cohort manifest/date metadata still need the
+original-machine handoff. See [reproduction](reproduce.md) for exact scope.
 
 Transcribe actual access dates from manifests, cache envelopes and retrieval
 logs. Reused records may predate the remaining downloads. Documentation and
@@ -509,4 +510,5 @@ is not a new terms check or retrieval date for this document.
 
 The requested publication is Pirtskhalava et al., *DBAASP v3*, 2021,
 [doi:10.1093/nar/gkaa991](https://doi.org/10.1093/nar/gkaa991).
-Any future project code license is separate from the source data's terms.
+Original project code is MIT licensed; derived DBAASP data retain their source
+terms and attribution. See [data attribution](../data/README.md).

@@ -1,0 +1,8 @@
+sequence,c_amidated,peptide_ids_json,n_assay_groups,active_groups,inactive_groups,mixed_labels,needs_note_review,has_unresolved_group,label,status,model_eligible,mixed_in_broad_dataset,group_id,partition
+KFFKKLKKSVKKHVKKFFKKPKVIGVSIPF,False,[15870],2,2,0,False,False,False,1,active,True,False,family_5f4fa8405bb162ac,clinical_family_buffer
+KKYLLPIVGNLLKSLL,True,[7638],1,1,0,False,False,False,1,active,True,False,family_11946c266c2f6302,clinical_family_buffer
+KRFKKFFKKIKKSVKKRVKKLFKKPRVIPISIPF,False,[22346],1,1,0,False,False,False,1,active,True,False,family_5f4fa8405bb162ac,clinical_family_buffer
+KRFKKFFKKLKNSVKKRAKKFFKKPRVIGVSIPF,True,[5390],2,2,0,False,False,False,1,active,True,False,family_5f4fa8405bb162ac,clinical_family_buffer
+KRFKKFFKKVKKSVKKRLKKIFKKPMVIGVTIPF,True,[5383],2,2,0,False,False,False,1,active,True,False,family_5f4fa8405bb162ac,clinical_family_buffer
+KRFKKFFMKLKKSVKKRVMKFFKKPMVIGVTFPF,True,[5387],2,2,0,False,False,False,1,active,True,False,family_5f4fa8405bb162ac,clinical_family_buffer
+LLPIVGNLLKSLL,True,[847],2,0,2,False,False,False,0,inactive,True,False,family_11946c266c2f6302,clinical_family_buffer

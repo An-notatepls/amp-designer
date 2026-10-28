@@ -1,0 +1,27 @@
+{
+  "purpose": "Read-only walkthrough inputs; copied summary exports, not raw data or new evaluation.",
+  "primary_model": "charge_corrected_amidation",
+  "primary_model_sha256": "5573f24eb93693b207b8e356c7e842433c1f9f26b08fd1fea6039dc85e31680e",
+  "files": {
+    "feature_ladder.csv": {
+      "sha256": "831ff66eb867fa264b3fbae7cad9da28a6042cada4e406e49d410b3763d88ed4",
+      "source": "results/comparisons/feature-comparison-v1-3c0530a63f1c77d0/feature_ladder.csv"
+    },
+    "intervals.csv": {
+      "sha256": "640c2725fe23398d65794b39a6293c0e6c412d7fdc2c0fe4760bc15bf060720e",
+      "source": "results/evaluation/holdout-evaluation-v1-836296044b94ac62/intervals.csv"
+    },
+    "metrics.csv": {
+      "sha256": "57ab8c8389778f6c4de6753c11860bf208b14108eafa62fcc8b4fb61dab94b02",
+      "source": "results/evaluation/holdout-evaluation-v1-836296044b94ac62/metrics.csv"
+    },
+    "precision_at_k.csv": {
+      "sha256": "841a0b3ed5f4f6fa1155ba823ee21209ae67a9a857e08563381ca35a2ce3e626",
+      "source": "results/evaluation/holdout-evaluation-v1-836296044b94ac62/precision_at_k.csv"
+    },
+    "reported_counts.json": {
+      "sha256": "73bec6047407d01952315652e45120ce3d537b6de8d516a0300f8b04b1d3db95",
+      "source": "Previously reported collection/cohort/split counts and pasted training-only sensitivity output; not independently reconstructed from raw records in this notebook."
+    }
+  }
+}
