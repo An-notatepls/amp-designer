@@ -1,0 +1,131 @@
+{
+  "spec": {
+    "version": "holdout-evaluation-v1",
+    "pretest_manifest_sha256": "836296044b94ac6281e67ea46194ecd4ad1b8f540d58d17e127d1bbf0ab7def2",
+    "evaluator_sha256": "f723d11f01f6dd4c21e10d7e8e2c92f3390e6128c48c5a9cef1a5cb426873e6e",
+    "environment": {
+      "python": "3.13.4",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "frozen_outcome_sha256": {
+      "test.csv": "adeda70db427a3dd9500a0a3f7eba09001d0961d3e57e3434e3ff1bd738ee8a2",
+      "clinical_exploratory.csv": "b0e044c5a9b034816850ee54cdbb1756e85ccefd6f04dac22b09124cd134b329"
+    },
+    "conventions": {
+      "undefined_precision": "0 if no predicted positive",
+      "undefined_mcc": "0 if denominator zero",
+      "one_class_panels": "report undefined metrics as null; retain counts and all panels",
+      "comparisons": "all fixed models reported; no winner selected from outcomes"
+    }
+  },
+  "started_at_utc": "2026-10-28T03:04:49.079749+00:00",
+  "completed_at_utc": "2026-10-28T03:05:09.523424+00:00",
+  "git": {
+    "commit": "371a47cd2f3564fe02bbbd41f65b8a19c4e074d6",
+    "verified_committed_files": [
+      "results/pretest/pretest-v1-cbd14c16acf65e99/evaluation_protocol.md",
+      "results/pretest/pretest-v1-cbd14c16acf65e99/evaluation_manifest.json",
+      "results/pretest/pretest-v1-cbd14c16acf65e99/test_subset_membership.csv",
+      "modeling/evaluate_holdout.py"
+    ]
+  },
+  "primary_model": "charge_corrected_amidation",
+  "primary_panel": "overall",
+  "primary_metric": "balanced_accuracy",
+  "primary_result": {
+    "panel": "overall",
+    "model": "charge_corrected_amidation",
+    "n": 71,
+    "active": 34,
+    "inactive": 37,
+    "groups": 47,
+    "balanced_accuracy": 0.7166136724960255,
+    "roc_auc": 0.7507949125596184,
+    "average_precision": 0.721218298218781,
+    "mcc": 0.43495956839498945,
+    "accuracy": 0.7183098591549296,
+    "precision": 0.71875,
+    "sensitivity": 0.6764705882352942,
+    "specificity": 0.7567567567567568,
+    "tn": 28.0,
+    "fp": 9.0,
+    "fn": 11.0,
+    "tp": 23.0
+  },
+  "panels": {
+    "overall": {
+      "n": 71,
+      "active": 34,
+      "inactive": 37,
+      "groups": 47,
+      "status": "evaluated fixed predictions",
+      "bootstrap_draws": 5000,
+      "two_class_draws": 5000,
+      "one_class_draws_omitted": 0
+    },
+    "global60_strict": {
+      "n": 45,
+      "active": 24,
+      "inactive": 21,
+      "groups": 29,
+      "status": "evaluated fixed predictions",
+      "bootstrap_draws": 5000,
+      "two_class_draws": 5000,
+      "one_class_draws_omitted": 0
+    },
+    "local60_strict": {
+      "n": 32,
+      "active": 17,
+      "inactive": 15,
+      "groups": 19,
+      "status": "evaluated fixed predictions",
+      "bootstrap_draws": 5000,
+      "two_class_draws": 5000,
+      "one_class_draws_omitted": 0
+    },
+    "combined60_strict": {
+      "n": 32,
+      "active": 17,
+      "inactive": 15,
+      "groups": 19,
+      "status": "evaluated fixed predictions",
+      "bootstrap_draws": 5000,
+      "two_class_draws": 5000,
+      "one_class_draws_omitted": 0
+    },
+    "clinical_exploratory": {
+      "n": 17,
+      "active": 14,
+      "inactive": 3,
+      "groups": 14,
+      "status": "evaluated fixed predictions",
+      "bootstrap_draws": 5000,
+      "two_class_draws": 4835,
+      "one_class_draws_omitted": 165
+    }
+  },
+  "outcome_files_opened": [
+    "test.csv",
+    "clinical_exploratory.csv"
+  ],
+  "model_fitting_performed": false,
+  "model_selection_performed": false,
+  "notes": [
+    "Primary result is the fixed model on the original overall test.",
+    "All other models/subsets are secondary; clinical results are exploratory.",
+    "Bootstrap intervals condition on fitted models and this curated dataset; they are not prospective wet-lab guarantees.",
+    "Novelty subsets are diagnostic and do not prove biological independence.",
+    "No code, feature, threshold or grouping choice may be selected using these outcomes."
+  ],
+  "source_attribution": "Derived from DBAASP data, https://dbaasp.org; see project citation and data terms.",
+  "output_sha256": {
+    "intervals.csv": "640c2725fe23398d65794b39a6293c0e6c412d7fdc2c0fe4760bc15bf060720e",
+    "metrics.csv": "57ab8c8389778f6c4de6753c11860bf208b14108eafa62fcc8b4fb61dab94b02",
+    "precision_at_k.csv": "841a0b3ed5f4f6fa1155ba823ee21209ae67a9a857e08563381ca35a2ce3e626",
+    "predictions.csv": "4e7da0d7a140049c9d28a49436fd61fa990726c73b9e9676ac93ff4f503db154"
+  }
+}

@@ -1,0 +1,181 @@
+panel,model,ranking_mode,k,candidate_pool,expected_precision_at_k,low,high,valid_draws,interval_suppressed_reason
+overall,dummy,all_identities,5,71,0.4788732394366197,0.29411764705882354,0.6236559139784946,5000,
+overall,dummy,all_identities,10,71,0.4788732394366197,0.29411764705882354,0.6236559139784946,5000,
+overall,dummy,all_identities,20,71,0.4788732394366197,0.29411764705882354,0.6236559139784946,5000,
+overall,dummy,one_representative_per_80pct_family,5,47,0.425531914893617,0.2973404255319151,0.574468085106383,5000,
+overall,dummy,one_representative_per_80pct_family,10,47,0.425531914893617,0.2973404255319151,0.574468085106383,5000,
+overall,dummy,one_representative_per_80pct_family,20,47,0.425531914893617,0.2973404255319151,0.574468085106383,5000,
+overall,charge_uncorrected,all_identities,5,71,0.8666666666666666,0.4,1.0,5000,
+overall,charge_uncorrected,all_identities,10,71,0.7733333333333333,0.5,1.0,5000,
+overall,charge_uncorrected,all_identities,20,71,0.7533333333333333,0.5,0.9,5000,
+overall,charge_uncorrected,one_representative_per_80pct_family,5,47,0.8,0.4,1.0,5000,
+overall,charge_uncorrected,one_representative_per_80pct_family,10,47,0.7142857142857142,0.4333333333333333,0.95,5000,
+overall,charge_uncorrected,one_representative_per_80pct_family,20,47,0.61875,0.37,0.8166666666666667,5000,
+overall,charge_corrected,all_identities,5,71,0.9,0.4,1.0,5000,
+overall,charge_corrected,all_identities,10,71,0.76,0.47994444444444445,1.0,5000,
+overall,charge_corrected,all_identities,20,71,0.75,0.5388725490196079,0.9,5000,
+overall,charge_corrected,one_representative_per_80pct_family,5,47,0.8666666666666666,0.4,1.0,5000,
+overall,charge_corrected,one_representative_per_80pct_family,10,47,0.74,0.45,1.0,5000,
+overall,charge_corrected,one_representative_per_80pct_family,20,47,0.6666666666666667,0.41314144736842107,0.85,5000,
+overall,charge_corrected_amidation,all_identities,5,71,0.8,0.4,1.0,5000,
+overall,charge_corrected_amidation,all_identities,10,71,0.8,0.5,1.0,5000,
+overall,charge_corrected_amidation,all_identities,20,71,0.7363636363636363,0.51996875,0.9,5000,
+overall,charge_corrected_amidation,one_representative_per_80pct_family,5,47,0.8,0.4,1.0,5000,
+overall,charge_corrected_amidation,one_representative_per_80pct_family,10,47,0.8,0.5,1.0,5000,
+overall,charge_corrected_amidation,one_representative_per_80pct_family,20,47,0.6833333333333333,0.45,0.875,5000,
+overall,composition,all_identities,5,71,0.6,0.0,1.0,5000,
+overall,composition,all_identities,10,71,0.7,0.4,1.0,5000,
+overall,composition,all_identities,20,71,0.8,0.55,0.95,5000,
+overall,composition,one_representative_per_80pct_family,5,47,0.6,0.0,1.0,5000,
+overall,composition,one_representative_per_80pct_family,10,47,0.6,0.3,0.9,5000,
+overall,composition,one_representative_per_80pct_family,20,47,0.75,0.5,0.9,5000,
+overall,physchem,all_identities,5,71,0.8,0.4,1.0,5000,
+overall,physchem,all_identities,10,71,0.7,0.4,1.0,5000,
+overall,physchem,all_identities,20,71,0.7,0.5,0.9,5000,
+overall,physchem,one_representative_per_80pct_family,5,47,0.8,0.4,1.0,5000,
+overall,physchem,one_representative_per_80pct_family,10,47,0.7,0.4,1.0,5000,
+overall,physchem,one_representative_per_80pct_family,20,47,0.65,0.45,0.85,5000,
+global60_strict,dummy,all_identities,5,45,0.5333333333333333,0.3103448275862069,0.6666666666666667,5000,
+global60_strict,dummy,all_identities,10,45,0.5333333333333333,0.3103448275862069,0.6666666666666667,5000,
+global60_strict,dummy,all_identities,20,45,0.5333333333333333,0.3103448275862069,0.6666666666666667,5000,
+global60_strict,dummy,one_representative_per_80pct_family,5,29,0.44827586206896547,0.27586206896551724,0.6206896551724138,5000,
+global60_strict,dummy,one_representative_per_80pct_family,10,29,0.44827586206896547,0.27586206896551724,0.6206896551724138,5000,
+global60_strict,dummy,one_representative_per_80pct_family,20,29,0.44827586206896547,0.27586206896551724,0.6206896551724138,5000,
+global60_strict,charge_uncorrected,all_identities,5,45,0.8666666666666666,0.3565217391304348,1.0,5000,
+global60_strict,charge_uncorrected,all_identities,10,45,0.7,0.4,0.9666666666666666,5000,
+global60_strict,charge_uncorrected,all_identities,20,45,0.6916666666666667,0.3922916666666667,0.8300000000000001,5000,
+global60_strict,charge_uncorrected,one_representative_per_80pct_family,5,29,0.8,0.2571428571428571,1.0,5000,
+global60_strict,charge_uncorrected,one_representative_per_80pct_family,10,29,0.6,0.3,0.8878124999999955,5000,
+global60_strict,charge_uncorrected,one_representative_per_80pct_family,20,29,0.5,0.2777083333333334,0.7083522727272724,5000,
+global60_strict,charge_corrected,all_identities,5,45,0.8666666666666666,0.3333333333333333,1.0,5000,
+global60_strict,charge_corrected,all_identities,10,45,0.7,0.4,0.9666666666666666,5000,
+global60_strict,charge_corrected,all_identities,20,45,0.69375,0.38636363636363635,0.8388888888888889,5000,
+global60_strict,charge_corrected,one_representative_per_80pct_family,5,29,0.8,0.27966666666666673,1.0,5000,
+global60_strict,charge_corrected,one_representative_per_80pct_family,10,29,0.6333333333333333,0.3,0.9,5000,
+global60_strict,charge_corrected,one_representative_per_80pct_family,20,29,0.4928571428571429,0.26666666666666666,0.725,5000,
+global60_strict,charge_corrected_amidation,all_identities,5,45,0.8,0.4,1.0,5000,
+global60_strict,charge_corrected_amidation,all_identities,10,45,0.7,0.4,1.0,5000,
+global60_strict,charge_corrected_amidation,all_identities,20,45,0.7166666666666666,0.35,0.85,5000,
+global60_strict,charge_corrected_amidation,one_representative_per_80pct_family,5,29,0.8,0.4,1.0,5000,
+global60_strict,charge_corrected_amidation,one_representative_per_80pct_family,10,29,0.7,0.4,0.9800000000000001,5000,
+global60_strict,charge_corrected_amidation,one_representative_per_80pct_family,20,29,0.475,0.25,0.7,5000,
+global60_strict,composition,all_identities,5,45,0.6,0.0,1.0,5000,
+global60_strict,composition,all_identities,10,45,0.7,0.4,1.0,5000,
+global60_strict,composition,all_identities,20,45,0.75,0.45,0.9,5000,
+global60_strict,composition,one_representative_per_80pct_family,5,29,0.6,0.0,1.0,5000,
+global60_strict,composition,one_representative_per_80pct_family,10,29,0.7,0.4,1.0,5000,
+global60_strict,composition,one_representative_per_80pct_family,20,29,0.55,0.3,0.8,5000,
+global60_strict,physchem,all_identities,5,45,0.8,0.4,1.0,5000,
+global60_strict,physchem,all_identities,10,45,0.8,0.4,1.0,5000,
+global60_strict,physchem,all_identities,20,45,0.7,0.4,0.85,5000,
+global60_strict,physchem,one_representative_per_80pct_family,5,29,0.8,0.4,1.0,5000,
+global60_strict,physchem,one_representative_per_80pct_family,10,29,0.7,0.4,1.0,5000,
+global60_strict,physchem,one_representative_per_80pct_family,20,29,0.5,0.25,0.7,5000,
+local60_strict,dummy,all_identities,5,32,0.53125,0.21052631578947367,0.6888888888888889,5000,
+local60_strict,dummy,all_identities,10,32,0.53125,0.21052631578947367,0.6888888888888889,5000,
+local60_strict,dummy,all_identities,20,32,0.53125,,,4440,too few valid ranking resamples
+local60_strict,dummy,one_representative_per_80pct_family,5,19,0.3684210526315789,0.15789473684210525,0.5789473684210527,5000,
+local60_strict,dummy,one_representative_per_80pct_family,10,19,0.3684210526315789,0.15789473684210525,0.5789473684210527,5000,
+local60_strict,dummy,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+local60_strict,charge_uncorrected,all_identities,5,32,0.8,0.4,1.0,5000,
+local60_strict,charge_uncorrected,all_identities,10,32,0.75,0.3375,0.96,5000,
+local60_strict,charge_uncorrected,all_identities,20,32,0.7583333333333334,,,4440,too few valid ranking resamples
+local60_strict,charge_uncorrected,one_representative_per_80pct_family,5,19,0.72,0.3333333333333333,1.0,5000,
+local60_strict,charge_uncorrected,one_representative_per_80pct_family,10,19,0.6166666666666667,0.3,0.9,5000,
+local60_strict,charge_uncorrected,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+local60_strict,charge_corrected,all_identities,5,32,0.8,0.4,1.0,5000,
+local60_strict,charge_corrected,all_identities,10,32,0.7666666666666666,0.4,0.9666666666666666,5000,
+local60_strict,charge_corrected,all_identities,20,32,0.7642857142857142,,,4440,too few valid ranking resamples
+local60_strict,charge_corrected,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+local60_strict,charge_corrected,one_representative_per_80pct_family,10,19,0.7,0.3,0.9,5000,
+local60_strict,charge_corrected,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+local60_strict,charge_corrected_amidation,all_identities,5,32,0.8,0.4,1.0,5000,
+local60_strict,charge_corrected_amidation,all_identities,10,32,0.8,0.4,1.0,5000,
+local60_strict,charge_corrected_amidation,all_identities,20,32,0.725,,,4440,too few valid ranking resamples
+local60_strict,charge_corrected_amidation,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+local60_strict,charge_corrected_amidation,one_representative_per_80pct_family,10,19,0.7,0.3,0.9400000000000001,5000,
+local60_strict,charge_corrected_amidation,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+local60_strict,composition,all_identities,5,32,0.6,0.2,1.0,5000,
+local60_strict,composition,all_identities,10,32,0.7,0.3,0.9,5000,
+local60_strict,composition,all_identities,20,32,0.75,,,4440,too few valid ranking resamples
+local60_strict,composition,one_representative_per_80pct_family,5,19,0.6,0.2,1.0,5000,
+local60_strict,composition,one_representative_per_80pct_family,10,19,0.6,0.2,0.9,5000,
+local60_strict,composition,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+local60_strict,physchem,all_identities,5,32,0.8,0.4,1.0,5000,
+local60_strict,physchem,all_identities,10,32,0.7,0.3,1.0,5000,
+local60_strict,physchem,all_identities,20,32,0.7,,,4440,too few valid ranking resamples
+local60_strict,physchem,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+local60_strict,physchem,one_representative_per_80pct_family,10,19,0.6,0.3,0.9,5000,
+local60_strict,physchem,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,dummy,all_identities,5,32,0.53125,0.21052631578947367,0.6888888888888889,5000,
+combined60_strict,dummy,all_identities,10,32,0.53125,0.21052631578947367,0.6888888888888889,5000,
+combined60_strict,dummy,all_identities,20,32,0.53125,,,4440,too few valid ranking resamples
+combined60_strict,dummy,one_representative_per_80pct_family,5,19,0.3684210526315789,0.15789473684210525,0.5789473684210527,5000,
+combined60_strict,dummy,one_representative_per_80pct_family,10,19,0.3684210526315789,0.15789473684210525,0.5789473684210527,5000,
+combined60_strict,dummy,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,charge_uncorrected,all_identities,5,32,0.8,0.4,1.0,5000,
+combined60_strict,charge_uncorrected,all_identities,10,32,0.75,0.3375,0.96,5000,
+combined60_strict,charge_uncorrected,all_identities,20,32,0.7583333333333334,,,4440,too few valid ranking resamples
+combined60_strict,charge_uncorrected,one_representative_per_80pct_family,5,19,0.72,0.3333333333333333,1.0,5000,
+combined60_strict,charge_uncorrected,one_representative_per_80pct_family,10,19,0.6166666666666667,0.3,0.9,5000,
+combined60_strict,charge_uncorrected,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,charge_corrected,all_identities,5,32,0.8,0.4,1.0,5000,
+combined60_strict,charge_corrected,all_identities,10,32,0.7666666666666666,0.4,0.9666666666666666,5000,
+combined60_strict,charge_corrected,all_identities,20,32,0.7642857142857142,,,4440,too few valid ranking resamples
+combined60_strict,charge_corrected,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+combined60_strict,charge_corrected,one_representative_per_80pct_family,10,19,0.7,0.3,0.9,5000,
+combined60_strict,charge_corrected,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,charge_corrected_amidation,all_identities,5,32,0.8,0.4,1.0,5000,
+combined60_strict,charge_corrected_amidation,all_identities,10,32,0.8,0.4,1.0,5000,
+combined60_strict,charge_corrected_amidation,all_identities,20,32,0.725,,,4440,too few valid ranking resamples
+combined60_strict,charge_corrected_amidation,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+combined60_strict,charge_corrected_amidation,one_representative_per_80pct_family,10,19,0.7,0.3,0.9400000000000001,5000,
+combined60_strict,charge_corrected_amidation,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,composition,all_identities,5,32,0.6,0.2,1.0,5000,
+combined60_strict,composition,all_identities,10,32,0.7,0.3,0.9,5000,
+combined60_strict,composition,all_identities,20,32,0.75,,,4440,too few valid ranking resamples
+combined60_strict,composition,one_representative_per_80pct_family,5,19,0.6,0.2,1.0,5000,
+combined60_strict,composition,one_representative_per_80pct_family,10,19,0.6,0.2,0.9,5000,
+combined60_strict,composition,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+combined60_strict,physchem,all_identities,5,32,0.8,0.4,1.0,5000,
+combined60_strict,physchem,all_identities,10,32,0.7,0.3,1.0,5000,
+combined60_strict,physchem,all_identities,20,32,0.7,,,4440,too few valid ranking resamples
+combined60_strict,physchem,one_representative_per_80pct_family,5,19,0.8,0.4,1.0,5000,
+combined60_strict,physchem,one_representative_per_80pct_family,10,19,0.6,0.3,0.9,5000,
+combined60_strict,physchem,one_representative_per_80pct_family,20,19,,,,0,k exceeds candidate pool
+clinical_exploratory,dummy,all_identities,5,17,0.8235294117647058,0.6818181818181819,0.9375,4835,
+clinical_exploratory,dummy,all_identities,10,17,0.8235294117647058,0.6818181818181819,0.9375,4835,
+clinical_exploratory,dummy,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,dummy,one_representative_per_80pct_family,5,14,0.8571428571428571,0.6428571428571429,1.0,4835,
+clinical_exploratory,dummy,one_representative_per_80pct_family,10,14,0.8571428571428571,0.6428571428571429,1.0,4835,
+clinical_exploratory,dummy,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool
+clinical_exploratory,charge_uncorrected,all_identities,5,17,1.0,0.8,1.0,4835,
+clinical_exploratory,charge_uncorrected,all_identities,10,17,0.9,0.7,1.0,4835,
+clinical_exploratory,charge_uncorrected,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,charge_uncorrected,one_representative_per_80pct_family,5,14,1.0,0.8,1.0,4835,
+clinical_exploratory,charge_uncorrected,one_representative_per_80pct_family,10,14,0.9,0.675,1.0,4835,
+clinical_exploratory,charge_uncorrected,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool
+clinical_exploratory,charge_corrected,all_identities,5,17,1.0,0.861131221719457,1.0,4835,
+clinical_exploratory,charge_corrected,all_identities,10,17,0.9,0.7454545454545454,1.0,4835,
+clinical_exploratory,charge_corrected,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,charge_corrected,one_representative_per_80pct_family,5,14,1.0,0.8,1.0,4835,
+clinical_exploratory,charge_corrected,one_representative_per_80pct_family,10,14,0.8666666666666666,0.6428571428571429,1.0,4835,
+clinical_exploratory,charge_corrected,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool
+clinical_exploratory,charge_corrected_amidation,all_identities,5,17,1.0,0.8666666666666666,1.0,4835,
+clinical_exploratory,charge_corrected_amidation,all_identities,10,17,0.9,0.7666666666666667,1.0,4835,
+clinical_exploratory,charge_corrected_amidation,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,charge_corrected_amidation,one_representative_per_80pct_family,5,14,1.0,0.7,1.0,4835,
+clinical_exploratory,charge_corrected_amidation,one_representative_per_80pct_family,10,14,0.85,0.6,1.0,4835,
+clinical_exploratory,charge_corrected_amidation,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool
+clinical_exploratory,composition,all_identities,5,17,1.0,0.8,1.0,4835,
+clinical_exploratory,composition,all_identities,10,17,0.9,0.7,1.0,4835,
+clinical_exploratory,composition,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,composition,one_representative_per_80pct_family,5,14,1.0,0.8,1.0,4835,
+clinical_exploratory,composition,one_representative_per_80pct_family,10,14,0.9,0.7,1.0,4835,
+clinical_exploratory,composition,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool
+clinical_exploratory,physchem,all_identities,5,17,1.0,1.0,1.0,4835,
+clinical_exploratory,physchem,all_identities,10,17,0.9,0.8,1.0,4835,
+clinical_exploratory,physchem,all_identities,20,17,,,,633,k exceeds candidate pool
+clinical_exploratory,physchem,one_representative_per_80pct_family,5,14,1.0,1.0,1.0,4835,
+clinical_exploratory,physchem,one_representative_per_80pct_family,10,14,1.0,0.8,1.0,4835,
+clinical_exploratory,physchem,one_representative_per_80pct_family,20,14,,,,0,k exceeds candidate pool

@@ -1,0 +1,36 @@
+{
+  "spec": {
+    "version": "holdout-evaluation-v1",
+    "pretest_manifest_sha256": "836296044b94ac6281e67ea46194ecd4ad1b8f540d58d17e127d1bbf0ab7def2",
+    "evaluator_sha256": "f723d11f01f6dd4c21e10d7e8e2c92f3390e6128c48c5a9cef1a5cb426873e6e",
+    "environment": {
+      "python": "3.13.4",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "frozen_outcome_sha256": {
+      "test.csv": "adeda70db427a3dd9500a0a3f7eba09001d0961d3e57e3434e3ff1bd738ee8a2",
+      "clinical_exploratory.csv": "b0e044c5a9b034816850ee54cdbb1756e85ccefd6f04dac22b09124cd134b329"
+    },
+    "conventions": {
+      "undefined_precision": "0 if no predicted positive",
+      "undefined_mcc": "0 if denominator zero",
+      "one_class_panels": "report undefined metrics as null; retain counts and all panels",
+      "comparisons": "all fixed models reported; no winner selected from outcomes"
+    }
+  },
+  "output": "/Users/tamanbuivu/Documents/amp-designer/results/evaluation/holdout-evaluation-v1-836296044b94ac62",
+  "started_at_utc": "2026-10-28T03:04:49.079749+00:00",
+  "git": {
+    "commit": "371a47cd2f3564fe02bbbd41f65b8a19c4e074d6",
+    "verified_committed_files": [
+      "results/pretest/pretest-v1-cbd14c16acf65e99/evaluation_protocol.md",
+      "results/pretest/pretest-v1-cbd14c16acf65e99/evaluation_manifest.json",
+      "results/pretest/pretest-v1-cbd14c16acf65e99/test_subset_membership.csv",
+      "modeling/evaluate_holdout.py"
+    ]
+  }
+}
