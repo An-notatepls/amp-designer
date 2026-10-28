@@ -14,4 +14,4 @@ jobs:
       - run: python -m unittest test_prepare_splits.py -v
       - run: python -m unittest discover -s modeling -p 'test_*.py' -v
       - run: python tools/verify_release.py
-      - run: python tools/reproduce_modeling.py --baseline-only
+      - run: python tools/reproduce_modeling.py
