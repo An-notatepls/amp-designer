@@ -9,7 +9,7 @@ import json
 import math
 import sys
 from pathlib import Path
-from release_paths import ROOT, SPLIT_REL, BASELINE_REL, COMPARISON_REL
+from release_paths import ROOT, SPLIT_REL, BASELINE_REL, COMPARISON_REL, SENSITIVITY_REL
 from verify_release import verify
 sys.path.insert(0, str(ROOT / 'modeling'))
 import train_baseline as base
@@ -70,6 +70,15 @@ def main():
         compare_rows(ROOT / COMPARISON_REL / 'feature_ladder.csv', new_comp / 'feature_ladder.csv', ['model'])
         compare_rows(ROOT / COMPARISON_REL / 'paired_differences.csv', new_comp / 'paired_differences.csv', ['model', 'previous_model', 'metric'])
         print('PASS: feature ladder and paired intervals match.', flush=True)
+        import check_label_sensitivity as sensitivity
+        new_labels, _ = sensitivity.check(ROOT / SPLIT_REL,
+                                         ROOT / 'data/curation/full_note_reviews.csv',
+                                         output / 'label_sensitivity')
+        original_labels = json.loads((ROOT / SENSITIVITY_REL / 'sensitivity_report.json').read_text())
+        for name, digest in original_labels['output_sha256'].items():
+            if base.sha_file(new_labels / name) != digest:
+                raise ValueError(f'Training-label sensitivity export differs: {name}')
+        print('PASS: training-only 16/32/64-uM sensitivity exports match original fingerprints.', flush=True)
     print('Training-only reproduction complete. Original reports and held-out outcomes were not changed.')
 
 

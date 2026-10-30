@@ -3,6 +3,7 @@ import csv
 import hashlib
 import json
 import math
+import subprocess
 import shutil
 import sys
 import tempfile
@@ -27,6 +28,15 @@ def toy_model():
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_committed_portable_model_runs_without_site_packages(self):
+        result = subprocess.run([sys.executable, '-I', '-S', str(ROOT / 'modeling/predict_portable.py'),
+                                 '--sequence', 'AAAAAAAAAA', '--unmodified'],
+                                check=True, capture_output=True, text=True)
+        prediction = json.loads(result.stdout)
+        self.assertEqual(prediction['predicted_label'], 'inactive')
+        self.assertEqual(prediction['source_model_sha256'], portable.EXPECTED_SOURCE)
+        self.assertAlmostEqual(prediction['model_probability_active'], 0.1696300091588566, places=12)
+
     def test_portable_features_probability_and_tie(self):
         m = portable.validate_model(toy_model())
         row = portable.predict('AKRDEAAAAA', False, m)

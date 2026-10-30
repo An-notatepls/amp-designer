@@ -12,6 +12,5 @@ data/processed/*
 # Separate local environments and generated reproduction/export artifacts.
 .venv-*/
 results/reproduced/
-artifacts/model-v1/
 amp-local-release-export*.zip
 *.joblib

@@ -23,7 +23,12 @@ the original split manifest. They permit modeling reproduction while preserving
 original inputs. Test/clinical outcomes are now public/evaluated; do not reuse
 them as a fresh blind test for future model development.
 
-The original full 2,217-ID manifest and collection timestamp metadata must be
-exported from the original local cache with tools/export_local_release.py.
-Dates are not inferred from filesystem modification times. Per-record retrieval
-dates were not recorded by the downloader; that missing history is disclosed.
+The original full 2,217-ID manifest is committed under
+`data/manifests/ecoli-full-v1/manifest.json`, with the original export checksums
+and timestamp metadata. The model JSON is under `artifacts/model-v1/`.
+All original source copies match the recorded build/sensitivity fingerprints.
+
+Observed listing-page timestamps span 2026-10-11 19:45:54.378398 through
+19:46:41.624464 UTC. These describe listing requests, not all peptide-record
+retrievals. The old downloader did not store individual record-download dates;
+those remain explicitly unknown. See docs/collection_metadata.md.

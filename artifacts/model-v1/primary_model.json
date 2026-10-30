@@ -1,0 +1,27 @@
+{
+  "schema": "amp-primary-linear-v1",
+  "feature_names": [
+    "charge_proxy",
+    "c_amidated"
+  ],
+  "classes": [
+    0,
+    1
+  ],
+  "mean": [
+    4.558375634517766,
+    0.4517766497461929
+  ],
+  "scale": [
+    2.4040772053227646,
+    0.497669075280249
+  ],
+  "coef": [
+    0.8141563568424943,
+    0.32266647669954623
+  ],
+  "intercept": 0.24838365480780178,
+  "prediction_threshold": 0.5,
+  "source_model_sha256": "5573f24eb93693b207b8e356c7e842433c1f9f26b08fd1fea6039dc85e31680e",
+  "note": "Exact parameters exported from evaluated frozen model; uncalibrated database prediction."
+}

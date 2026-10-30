@@ -1,6 +1,6 @@
 # Reproduction and inference
 
-Updated 2026-10-28. Commands run from the repository root. The fixed experiment
+Updated 2026-10-29. Commands run from the repository root. The fixed experiment
 is preserved; this guide does not replace original reports, rewrite history,
 select another model or reopen final outcomes for tuning.
 
@@ -38,13 +38,17 @@ merely to display the notebook.
 ./.venv/bin/python tools/verify_release.py
 ```
 
-There are 63 tests, including seven new release checks. Test fixtures are
-synthetic except a fingerprint consistency check over committed artifacts.
+There are 64 tests, including eight release checks. Fixtures are synthetic
+except frozen-artifact integrity checks and an isolated invocation of the
+committed portable model with its recorded synthetic syntax-example prediction.
 The verifier checks the exact frozen partitions, provenance inputs, source
 fingerprints and present report exports. It lists uncommitted generated files
 separately; their absence does not mean that every original artifact is present.
-Hosted CI on Ubuntu 24.04 / Python 3.13.4 passed all 63 tests, frozen-input
-verification and the full modeling reproduction; see [the successful run](https://github.com/An-notatepls/amp-designer/actions/runs/40631386045).
+Hosted CI on Ubuntu 24.04 / Python 3.13.4 runs all 64 tests, frozen-input
+verification and the full modeling/label-sensitivity reproduction; see the
+[latest PR checks](https://github.com/An-notatepls/amp-designer/actions).
+The earlier 63-test/full-modeling check also passed in
+[this recorded run](https://github.com/An-notatepls/amp-designer/actions/runs/40631386045).
 Local authoring tests also passed on Python 3.12.14 with the recorded numerical
 library versions.
 
@@ -63,7 +67,8 @@ it is assignment metadata rather than a complete training dataset.
 This uses the frozen training and comparison scripts. It writes a new run under
 `results/reproduced/`, checks exact saved CV folds and selected C, and compares
 baseline CV scores/coefficients, the feature ladder and paired bootstrap
-intervals at numerical tolerance 1e-10. It also runs the existing grouping
+intervals at numerical tolerance 1e-10. It also rebuilds the training-only
+16/32/64-µM label-sensitivity exports and checks their original fingerprints. It also runs the existing grouping
 sensitivity diagnostic. No test/clinical outcome files are opened by training.
 The initial integrity verifier hashes them as immutable inputs, which is
 explicitly different from interpreting their outcomes for model selection.
@@ -103,65 +108,77 @@ notebook has 12 code cells and six figure outputs. Its code was validated in
 sequential in-process IPython because authoring-kernel socket binding was
 unavailable; local normal-kernel Run All remains to be confirmed.
 
-## Export the original model and raw-cohort provenance
+## Prediction from a fresh clone
 
-The exact original primary joblib bundle, raw 2,217-ID manifest, cached listing
-timestamps and complete measurement/build reports remain on the original Mac.
-They must not be recreated from the now-known test results. The export tool
-checks them against frozen fingerprints before producing portable files:
-
-```bash
-./.venv/bin/python tools/export_local_release.py
-```
-
-This creates a new `amp-local-release-export.zip`. It contains:
-
-- A JSON scaler/logistic parameter model and its checksum manifest, exported
-  from the exact evaluated primary model. A 204-point charge/amidation grid covering the supported
-  feature combinations are checked against its decision function without fitting.
-- The unmodified original full ID manifest under `data/manifests/ecoli-full-v1/`.
-- Original measurement, build and provenance files with unchanged fingerprints.
-- The listing/manifest timestamp values actually present in the local cache.
-  Individual record-download timestamps were not saved and remain unknown.
-
-The exporter only loads the trusted original local joblib artifact. Do not
-load pickle/joblib from an untrusted source. Keep the ZIP outside staging;
-review and add its extracted intended files explicitly. Uploading this ZIP is
-the remaining handoff needed to finish the original-model/raw-cohort release.
-There is no invented release model or backdated dataset access date in this branch.
-
-After exporting and placing the portable files under `artifacts/model-v1/`:
+The original evaluated model is now committed as portable scaler/logistic
+parameters under `artifacts/model-v1/`. Inference needs only Python's standard
+library; it reads JSON rather than pickle and never fits a model:
 
 ```bash
 python3 modeling/predict_portable.py --sequence AAAAAAAAAA --unmodified
 ```
 
-This inference command needs only Python's standard library, reads JSON rather
-than pickle, checks the model checksum, and never fits a model. Before that
-export is installed, it reports a missing artifact rather than making up a
-prediction. Scores are uncalibrated and do not establish experimental activity.
-The synthetic sequence demonstrates syntax only. Use `--amidated` when applicable;
-canonical uppercase 10–50-residue monomers and the supported chemistry are required.
+The synthetic input demonstrates syntax only. It produces an inactive label
+with score approximately 0.16963, matching the original local CLI. Use
+`--amidated` for C-terminal amidation. Inputs must be canonical uppercase
+10–50-residue monomers with the supported chemistry. Model scores are
+uncalibrated and do not establish experimental activity, toxicity or efficacy.
 
-Your existing local model command remains available unchanged:
+`model_manifest.json` verifies the JSON checksum and records the original
+primary joblib SHA-256. The original-machine exporter checked the exact source
+bundle before extracting parameters and compared decisions across a 204-point
+charge/amidation grid. The received export was independently compared with the
+previously reproduced training-only model on the same grid within 1e-12.
+There was no refitting, model selection or repeated held-out evaluation.
+
+The JSON model/manifest are versioned together; a checksum detects changes
+relative to that manifest, rather than authenticating arbitrary downloads.
+An isolated-process test runs the real portable CLI with `python -I -S`, without
+third-party site packages.
+
+The original joblib command still works on the original machine:
 
 ```bash
 ./.venv/bin/python modeling/predict.py --sequence AAAAAAAAAA --unmodified
 ```
 
 Its batch mode takes a CSV with `sequence,c_amidated` and states exactly
-`True` or `False`, plus an optional new `--output` CSV path.
+`True` or `False`, plus an optional new `--output` CSV path. A fresh clone does
+not include the original joblib bundle; use the portable command there.
+
+## Original-machine export and provenance
+
+The supplied export is now integrated: portable model JSON, the unmodified
+2,217-ID full cohort manifest, original measurement/build/provenance files,
+checksums and actual observed listing timestamps. See
+[collection metadata](collection_metadata.md). The listing window is
+2026-10-11 19:45:54–19:46:41 UTC. Individual peptide retrieval dates were not
+recorded and remain unknown; export/documentation dates are not substitutes.
+
+`tools/export_local_release.py` is retained as the provenance/recovery utility.
+It requires the original trusted joblib and raw cache, so it is not a new-clone
+setup step and should not be rerun merely to use the committed model. It never
+fits a model or rewrites the frozen source reports.
 
 ## Level 3: best-effort DBAASP rebuild
 
-**Not yet demonstrated from a clean clone.** The frozen raw manifest must first
-be exported as above. Per-record download dates cannot be recovered from the
+**A new live crawl has not been demonstrated from a clean clone.** The frozen
+raw manifest and historical record checksums are now committed. Per-record download dates cannot be recovered from the
 current cache if they were never recorded. Documentation/export dates and file
 modification times must not be substituted for retrieval dates.
 
-Once available, copy the manifest's exact bytes into the original
-`data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json` location without
-replacing existing files. Then the original commands are:
+The first download commands below are optional and make network requests.
+Use a fresh cache for a new crawl; preserve any original local record cache.
+Restore the saved manifest to the expected raw namespace without overwriting
+an existing file:
+
+```bash
+mkdir -p data/raw/full/ecoli-full-v1-3cec454243584936
+cp -n data/manifests/ecoli-full-v1/manifest.json data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json
+```
+
+Run `python tools/verify_release.py` for committed-source integrity first. The
+original download/audit commands are:
 
 ```bash
 python download_pilot.py "data/raw/full/ecoli-full-v1-3cec454243584936/manifest.json"
@@ -182,7 +199,7 @@ For a background download, redirect output to a new log and never start two
 writers for the same manifest. Ctrl+C preserves completed validated records.
 
 DBAASP records can change or disappear. Compare new record bytes with the
-original build report's `record_sha256` mapping. A mismatch is source drift,
+original build report's `policy.record_sha256` mapping (keys are peptide IDs). A mismatch is source drift,
 not a reason to replace the frozen experiment or silently alter expected hashes.
 A current crawl cannot guarantee a byte-identical historical snapshot.
 
