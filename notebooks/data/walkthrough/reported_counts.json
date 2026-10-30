@@ -1,0 +1,85 @@
+{
+  "documentation_date": "2026-10-27",
+  "origin": "Previously reported collection/cohort/split counts and pasted training-only sensitivity output; not independently reconstructed from raw records in this notebook.",
+  "record_stages": {
+    "Downloaded records": 2217,
+    "With E. coli MIC": 1951,
+    "Sequence + E. coli MIC": 1420,
+    "Chemistry eligible": 1222
+  },
+  "mic_measurements": 3955,
+  "broad_statuses": {
+    "Active": 271,
+    "Inactive": 218,
+    "Needs note review": 232,
+    "Mixed": 43,
+    "Ambiguous": 12
+  },
+  "ready_unique_sequences": 486,
+  "partitions": [
+    {
+      "partition": "Training",
+      "identities": 394,
+      "sequences": 392,
+      "families": 242,
+      "active": 217,
+      "inactive": 177
+    },
+    {
+      "partition": "Primary test",
+      "identities": 71,
+      "sequences": 71,
+      "families": 47,
+      "active": 34,
+      "inactive": 37
+    },
+    {
+      "partition": "Clinical exploratory",
+      "identities": 17,
+      "sequences": 17,
+      "families": 14,
+      "active": 14,
+      "inactive": 3
+    },
+    {
+      "partition": "Clinical family buffer",
+      "identities": 7,
+      "sequences": 7,
+      "families": 2,
+      "active": 6,
+      "inactive": 1
+    }
+  ],
+  "sensitivity_original_training": [
+    {
+      "threshold_uM": 16,
+      "eligible": 377,
+      "active": 170,
+      "inactive": 207,
+      "excluded": 17,
+      "definite_label_changes": 30
+    },
+    {
+      "threshold_uM": 32,
+      "eligible": 394,
+      "active": 217,
+      "inactive": 177,
+      "excluded": 0,
+      "definite_label_changes": 0
+    },
+    {
+      "threshold_uM": 64,
+      "eligible": 380,
+      "active": 242,
+      "inactive": 138,
+      "excluded": 14,
+      "definite_label_changes": 25
+    }
+  ],
+  "pending_queue": {
+    "identities": 232,
+    "provisional_active_only": 180,
+    "provisional_inactive_only": 45,
+    "no_definite_group": 7
+  }
+}

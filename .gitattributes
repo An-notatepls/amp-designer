@@ -1,0 +1,7 @@
+# Preserve byte-level fingerprints of frozen data, reports and exported summaries.
+data/** -text
+results/** -text
+notebooks/data/** -text
+*.csv -text
+*.joblib -text -diff
+*.py text eol=lf
