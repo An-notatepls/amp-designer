@@ -1,5 +1,6 @@
 # Preserve byte-level fingerprints of frozen data, reports and exported summaries.
 data/** -text
+artifacts/** -text
 results/** -text
 notebooks/data/** -text
 *.csv -text

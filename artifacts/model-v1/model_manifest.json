@@ -1,0 +1,7 @@
+{
+  "source_model_sha256": "5573f24eb93693b207b8e356c7e842433c1f9f26b08fd1fea6039dc85e31680e",
+  "files": {
+    "primary_model.json": "84863a3123680bcdab7a99116ffcb01fcf468ef29590b389e103f6f1c240263c"
+  },
+  "export_validation": "A 204-point charge/amidation grid; decision tolerance 1e-12; labels identical."
+}

@@ -1,0 +1,6 @@
+{
+  "data/manifests/ecoli-full-v1/manifest.json": "4ba62d9d677aa9bb56048c49ef10652f6f9404589683bc8e5570c1544522391c",
+  "data/processed/ecoli-full-v1-3cec454243584936/45c31cc2e742/build_report.json": "ae17f9341706b74f2eea76a61ed59a6975fc73510ca74b3720fe81e5c3c7db2c",
+  "data/processed/ecoli-full-v1-3cec454243584936/45c31cc2e742/ecoli_measurements.csv": "3c80a9cb07d933aed5e358735661e00e41f472ec62dd3e8594ef37df36b6458d",
+  "data/processed/ecoli-full-v1-3cec454243584936/45c31cc2e742/provenance/83780b72da84/provenance_report.json": "7d8c82d64a7987d35efcf8cd158f00c334f444658d48717bb92b238dcc9a0e2d"
+}

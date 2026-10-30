@@ -1,0 +1,155 @@
+{
+  "documented_at_utc": "2026-10-30T03:00:25.164734+00:00",
+  "observed_metadata": [
+    {
+      "source": "data/manifests/ecoli-full-v1/manifest.json",
+      "field": "listing_started_at_utc",
+      "value": "2026-10-11T19:45:54.378162+00:00"
+    },
+    {
+      "source": "data/manifests/ecoli-full-v1/manifest.json",
+      "field": "source_prepared_at_utc",
+      "value": "2026-10-11T19:46:42.560386+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset0.json",
+      "source_sha256": "152a10d4964da2206144a2a45acfbc5e92ee49de9bd32dad1dd3432a69d5d9f3",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:45:54.378398+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset100.json",
+      "source_sha256": "d777e0685d2d90ae99a98582114ba820dc9dffd573a0e185a216b12e7024f39f",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:45:56.808656+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1000.json",
+      "source_sha256": "86fba8196d33f22d1aefa34968570ebb030ebe3b737b7f2c105fb2c7563ad6e5",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:16.841130+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1100.json",
+      "source_sha256": "ed0b816823a783f32d74801c0d6a6a4842a72d1506a6a7d402d027dd8aafe5ea",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:18.615289+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1200.json",
+      "source_sha256": "e582e6c576b7e2dee4188b9dc3fd1ead544a9aaea57f24523cb35e7b42ce4cce",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:20.530338+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1300.json",
+      "source_sha256": "b01e9b790c86f53940eacf7b8fce2f4320e5abca3d6444d1b4f6370a48e8f98f",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:22.788655+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1400.json",
+      "source_sha256": "6c0e31bce1a8be5e6f2398cc7e13e6b9dbefd57527d13b4987600169ff2a11e6",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:25.118787+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1500.json",
+      "source_sha256": "0fc95567a5e418088782b8896bd9f630d13a4098b6d26527ada37b159770d73b",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:26.777705+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1600.json",
+      "source_sha256": "aca40b87aee885de57dd3c1c2d5f13979e6513b5d7ba0dd3a06588ab09e99b98",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:28.493066+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1700.json",
+      "source_sha256": "b3e176ccd9dc9957b1b18ef923db12b5029ed1452482384df8556666c3997b37",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:30.565543+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1800.json",
+      "source_sha256": "020a178ef92da2d2b2ea65b3c881a741c795e8284f24080fa2904a18b4d8c0de",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:34.228088+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset1900.json",
+      "source_sha256": "9f4f1766bff8494256f052326b9652eeb70649980dcfcb11d1a2a517dd090c9c",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:36.595168+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset200.json",
+      "source_sha256": "58418fbe94e30d7ffa08d7c4faba8418d0120e266ecea0da93118279f787df15",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:45:58.815226+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset2000.json",
+      "source_sha256": "401d1d599899966599f1da1349f04fa4a758a481039fafa8d0ee409fb979bf44",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:38.243433+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset2100.json",
+      "source_sha256": "659c97897def2c6edf52b7e1f88fefbbed8f14ea735fddc7b19c42c6d4f9ff39",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:39.893406+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset2200.json",
+      "source_sha256": "05448b856fc312275c4108a43c04a2d61407d679f7b59751c9d40f348dc7037e",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:41.624464+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset300.json",
+      "source_sha256": "54cc330c40a5f826dc789f41f4ac2c19edeac06daaf1228e439d62023dcbf1df",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:01.894755+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset400.json",
+      "source_sha256": "b1ab4bfa76d25caef13444f9b023b175d0d0004b6a6c75f8c93dc9eed2f37571",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:05.043669+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset500.json",
+      "source_sha256": "0db2b515cf6cc34027fc7937b6ba2a5cb97b520e513ee660d9ebb8f1e83ac498",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:07.004356+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset600.json",
+      "source_sha256": "00fbaa2e9913594a3dd048900875e301f8c1277eb75458cca070cf9caa9ec4b0",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:08.955731+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset700.json",
+      "source_sha256": "9f02b2338e888f604e33c081068f3f4214356c8d9be753d72d1a7173e874eca6",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:11.209905+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset800.json",
+      "source_sha256": "116515117ea0d96c73026dac8b93ed75a682ca624cccf8179bc957ac89826ab3",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:13.574359+00:00"
+    },
+    {
+      "source": "data/raw/listings/ecoli-v1-3633071ecba6b1b7/page_n100_offset900.json",
+      "source_sha256": "61b504a37bb59e9a5e38daa5275400f8d3494c3a8619dce26970c88a0f835ba4",
+      "field": "retrieved_at_utc",
+      "value": "2026-10-11T19:46:15.097631+00:00"
+    }
+  ],
+  "record_download_dates": null,
+  "caveat": "Listing/manifest timestamps are preserved as labeled. Per-record retrieval timestamps were not saved by the downloader. File modification times and documentation dates are not substituted."
+}

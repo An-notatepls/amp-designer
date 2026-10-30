@@ -18,17 +18,20 @@ rerunning it reads bundled summaries without training or repeating evaluation.
 
 ## Status
 
-Documentation updated: **2026-10-28**. Data policy v0.1 is frozen for the reported
+Documentation updated: **2026-10-29**. Data policy v0.1 is frozen for the reported
 experiment; unresolved reviews remain excluded. Collection, labeling, grouped
 validation, final evaluation and an inference command are implemented. The
 inference command checks the frozen model fingerprint and does not retrain it.
 The walkthrough is implemented with saved outputs and six figures. Tests and
 training-only modeling reproduction are supported by committed, fingerprint-
-verified inputs. The original-model export, original raw ID manifest and observed
-collection-date metadata still require the local export described below.
+verified inputs. The original evaluated model is now included as portable JSON,
+alongside the original 2,217-ID cohort manifest, measurement/source tables and
+observed collection metadata. Prediction works from a fresh clone with standard
+Python; no model download, fitting or numerical-library installation is needed.
 Normal-kernel notebook Run All remains to be checked. Hosted CI on Python
-3.13.4 passed all 63 tests, fingerprint verification and the full training-only
-numerical reproduction. A complete live DBAASP rebuild has not been demonstrated.
+3.13.4 runs all 64 tests, including a real portable-model check without site
+packages, plus fingerprint and training-only reproduction checks; see the
+[latest PR checks](https://github.com/An-notatepls/amp-designer/actions). A complete live DBAASP rebuild has not been demonstrated.
 
 ## Data and primary cohort
 
@@ -90,32 +93,26 @@ for subset scores, development intervals, ranking results and label sensitivity.
 
 ## Quick start
 
-Use Python **3.13.4** for the original interpreter; `.python-version` records it.
-From a fresh clone:
+Prediction uses the committed JSON parameters and Python's standard library:
 
 ```bash
-python3 -m venv .venv
-./.venv/bin/python -m pip install -r requirements.txt
-./.venv/bin/python tools/verify_release.py
-./.venv/bin/python tools/reproduce_modeling.py
-```
-
-The last command reproduces training-only baseline/feature comparisons in a
-new output directory and compares numerical results; it does not repeat final
-evaluation or change original reports. Locally, all 63 tests and the full
-numeric reproduction passed on Python 3.12.14 with the recorded numerical-library
-versions. The full check also passed in [hosted CI on Python 3.13.4](https://github.com/An-notatepls/amp-designer/actions/runs/40631386045).
-
-Read the [reproduction guide](docs/reproduce.md) for the three reproducibility
-levels, dependency roles, tests and the separate notebook environment.
-
-The original evaluated model remains on the original Mac. Its verified export
-produces a portable JSON model; no replacement model is invented. After installing
-that export, inference needs only Python's standard library:
-
-```bash
+git clone https://github.com/An-notatepls/amp-designer.git
+cd amp-designer
 python3 modeling/predict_portable.py --sequence AAAAAAAAAA --unmodified
 ```
+
+While the model-packaging PR is open, clone with
+`--branch release/model-provenance` to access these files. The example produces an inactive prediction with
+a model score of approximately 0.16963; it does not establish experimental activity.
+
+For training reproduction, use Python **3.13.4**, pinned in `.python-version`,
+and install `requirements.txt` in a virtual environment. Then run
+`python tools/verify_release.py` and `python tools/reproduce_modeling.py`.
+The reproduction command writes to a new directory and checks baseline/CV
+results, feature comparisons and training-only label sensitivity; it does not
+repeat final evaluation or alter original reports. See the
+[reproduction guide](docs/reproduce.md) for exact commands, dependency roles,
+validation scope and the separate notebook environment.
 
 The synthetic sequence demonstrates syntax only; use `--amidated` when appropriate.
 Predictions cover only canonical 10–50-residue monomers with supported chemistry;
@@ -137,6 +134,7 @@ records. Please cite Pirtskhalava et al., *DBAASP v3*, Nucleic Acids Research
 49(D1):D288–D297 (2021), [doi:10.1093/nar/gkaa991](https://doi.org/10.1093/nar/gkaa991).
 Consult [DBAASP terms](https://dbaasp.org/terms-and-conditions) for source/derived
 data. Original code is [MIT licensed](LICENSE). Derived data retain DBAASP attribution
-and terms; see [data attribution](data/README.md). Observed collection metadata
-will be exported from the original cache. Per-record retrieval dates were not
-recorded; this documentation date is not a dataset access date.
+and terms; see [data attribution](data/README.md). The listing was retrieved on **2026-10-11, 19:45:54–19:46:41 UTC**, as recorded
+in the original cache metadata. Individual peptide download dates were not
+recorded. See [collection metadata](docs/collection_metadata.md); documentation
+and export dates are not dataset retrieval dates.

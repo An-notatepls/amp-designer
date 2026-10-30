@@ -1,6 +1,6 @@
 # Data preparation and labeling policy
 
-**Version: v0.1 — frozen for the reported experiment. Documentation updated: 2026-10-28.**
+**Version: v0.1 — frozen for the reported experiment. Documentation updated: 2026-10-29.**
 
 The fixed sequence-group split, primary model and evaluation protocol have now
 been used for final evaluation. Pending reviews remain excluded; the underlying
@@ -494,13 +494,14 @@ explicitly tracked exceptions under the ignored processed-data tree. Baseline
 The four frozen partition CSVs and three source provenance tables are now
 tracked with fingerprints checked against the original manifest. Training-only
 modeling reproduction compares their numerical results without rewriting reports.
-Raw records/listing caches and fitted joblib artifacts remain local. The portable
-original-model export and raw-cohort manifest/date metadata still need the
-original-machine handoff. See [reproduction](reproduce.md) for exact scope.
+Raw records/listing caches and fitted joblib artifacts remain local. The original-model parameter export, raw-cohort ID manifest, measurement/build/
+provenance source files and observed listing timestamps have now been supplied
+and verified. They are committed without altering original source/report bytes. See [reproduction](reproduce.md) for exact scope.
 
-Transcribe actual access dates from manifests, cache envelopes and retrieval
-logs. Reused records may predate the remaining downloads. Documentation and
-terms-check dates are not dataset retrieval dates.
+Observed listing timestamps have now been transcribed from the original
+metadata; see [collection metadata](collection_metadata.md). Reused records
+may predate other downloads. Individual record retrieval dates were not saved
+and remain unknown. Documentation and terms-check dates are not retrieval dates.
 
 This project acknowledges [DBAASP](https://dbaasp.org/) and the original
 experimental publications linked in its records. Consult its
