@@ -133,7 +133,7 @@ There was no refitting, model selection or repeated held-out evaluation.
 
 The JSON model/manifest are versioned together; a checksum detects changes
 relative to that manifest, rather than authenticating arbitrary downloads.
-An isolated-process test runs the real portable CLI with `python -I`, without
+An isolated-process test runs the real portable CLI with `python -I -S`, without
 third-party site packages.
 
 The original joblib command still works on the original machine:

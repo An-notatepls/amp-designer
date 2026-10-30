@@ -29,7 +29,7 @@ def toy_model():
 
 class ReleaseTests(unittest.TestCase):
     def test_committed_portable_model_runs_without_site_packages(self):
-        result = subprocess.run([sys.executable, '-I', str(ROOT / 'modeling/predict_portable.py'),
+        result = subprocess.run([sys.executable, '-I', '-S', str(ROOT / 'modeling/predict_portable.py'),
                                  '--sequence', 'AAAAAAAAAA', '--unmodified'],
                                 check=True, capture_output=True, text=True)
         prediction = json.loads(result.stdout)
