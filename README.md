@@ -18,7 +18,7 @@ rerunning it reads bundled summaries without training or repeating evaluation.
 
 ## Status
 
-Documentation updated: **2026-10-29**. Data policy v0.1 is frozen for the reported
+Documentation updated: **2026-11-02**. Data policy v0.1 is frozen for the reported
 experiment; unresolved reviews remain excluded. Collection, labeling, grouped
 validation, final evaluation and an inference command are implemented. The
 inference command checks the frozen model fingerprint and does not retrain it.
@@ -101,9 +101,9 @@ cd amp-designer
 python3 modeling/predict_portable.py --sequence AAAAAAAAAA --unmodified
 ```
 
-While the model-packaging PR is open, clone with
-`--branch release/model-provenance` to access these files. The example produces an inactive prediction with
-a model score of approximately 0.16963; it does not establish experimental activity.
+The predictor and model parameters are included on `main`; no separate branch or
+model download is needed. The example produces an inactive prediction with a
+model score of approximately 0.16963; it does not establish experimental activity.
 
 For training reproduction, use Python **3.13.4**, pinned in `.python-version`,
 and install `requirements.txt` in a virtual environment. Then run
