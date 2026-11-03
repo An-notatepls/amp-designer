@@ -1,6 +1,6 @@
 # Reproduction and inference
 
-Updated 2026-10-29. Commands run from the repository root. The fixed experiment
+Updated 2026-11-02. Commands run from the repository root. The fixed experiment
 is preserved; this guide does not replace original reports, rewrite history,
 select another model or reopen final outcomes for tuning.
 
@@ -38,13 +38,14 @@ merely to display the notebook.
 ./.venv/bin/python tools/verify_release.py
 ```
 
-There are 64 tests, including eight release checks. Fixtures are synthetic
+There are 70 tests, including eight release checks and six v2 training-review
+checks. Fixtures are synthetic
 except frozen-artifact integrity checks and an isolated invocation of the
 committed portable model with its recorded synthetic syntax-example prediction.
 The verifier checks the exact frozen partitions, provenance inputs, source
 fingerprints and present report exports. It lists uncommitted generated files
 separately; their absence does not mean that every original artifact is present.
-Hosted CI on Ubuntu 24.04 / Python 3.13.4 runs all 64 tests, frozen-input
+Hosted CI on Ubuntu 24.04 / Python 3.13.4 runs the test suites, frozen-input
 verification and the full modeling/label-sensitivity reproduction; see the
 [latest PR checks](https://github.com/An-notatepls/amp-designer/actions).
 The earlier 63-test/full-modeling check also passed in
@@ -159,6 +160,12 @@ recorded and remain unknown; export/documentation dates are not substitutes.
 It requires the original trusted joblib and raw cache, so it is not a new-clone
 setup step and should not be rerun merely to use the committed model. It never
 fits a model or rewrites the frozen source reports.
+
+## Separate v2 training review
+
+The completed v1 remains frozen. A versioned note-review overlay and a new
+training-only candidate build are described in [the v2 guide](training_v2.md).
+The new candidate table is not a replacement for any original split file.
 
 ## Level 3: best-effort DBAASP rebuild
 

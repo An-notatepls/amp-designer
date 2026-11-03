@@ -29,7 +29,7 @@ alongside the original 2,217-ID cohort manifest, measurement/source tables and
 observed collection metadata. Prediction works from a fresh clone with standard
 Python; no model download, fitting or numerical-library installation is needed.
 Normal-kernel notebook Run All remains to be checked. Hosted CI on Python
-3.13.4 runs all 64 tests, including a real portable-model check without site
+3.13.4 runs the test suites, including a real portable-model check without site
 packages, plus fingerprint and training-only reproduction checks; see the
 [latest PR checks](https://github.com/An-notatepls/amp-designer/actions). A complete live DBAASP rebuild has not been demonstrated.
 
@@ -118,6 +118,16 @@ The synthetic sequence demonstrates syntax only; use `--amidated` when appropria
 Predictions cover only canonical 10–50-residue monomers with supported chemistry;
 the probability is an uncalibrated model score. Existing local joblib inference
 continues to work with `modeling/predict.py` in the frozen modeling environment.
+
+## Next experiment: training-data review
+
+A separate, annotation-reviewed development dataset now contains **442 training
+identities**, including 48 recovered from the unresolved training-family queue.
+All 394 original training labels are preserved. This is preparation for a v2
+experiment; no new model or accuracy improvement has been reported. See
+[the training-review guide](docs/training_v2.md) for decisions, remaining
+uncertainties and the planned embedding comparison. The v1 results above and
+its evaluated holdouts remain historical evidence.
 
 ## Limitations and source
 
