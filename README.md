@@ -119,15 +119,15 @@ Predictions cover only canonical 10–50-residue monomers with supported chemist
 the probability is an uncalibrated model score. Existing local joblib inference
 continues to work with `modeling/predict.py` in the frozen modeling environment.
 
-## Next experiment: training-data review
+## V2 development experiments
 
 A separate, annotation-reviewed development dataset now contains **442 training
 identities**, including 48 recovered from the unresolved training-family queue.
-All 394 original training labels are preserved. This is preparation for a v2
-experiment; no new model or accuracy improvement has been reported. See
-[the training-review guide](docs/training_v2.md) for decisions, remaining
-uncertainties and the planned embedding comparison. The v1 results above and
-its evaluated holdouts remain historical evidence.
+All 394 original training labels are preserved. A training-only ESM-2 comparison
+scored 74.2% validation accuracy versus 73.8% for the simple model, with a paired
+uncertainty interval that includes no improvement. See [the training-review guide](docs/training_v2.md)
+and [embedding results](docs/embedding_v2.md). These are development scores;
+the v1 results above and its evaluated holdouts remain historical evidence.
 
 ## Limitations and source
 

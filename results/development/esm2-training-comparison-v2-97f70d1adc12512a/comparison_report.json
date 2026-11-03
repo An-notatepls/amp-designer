@@ -1,0 +1,247 @@
+{
+  "bootstrap": {
+    "requested_draws": 2000,
+    "seed": 42,
+    "valid_shared_draws": 2000
+  },
+  "counts": {
+    "active": 250,
+    "groups": 267,
+    "identities": 442,
+    "sequences": 439
+  },
+  "encoder_fine_tuned": false,
+  "heldout_classifier_csvs_opened": [],
+  "output_sha256": {
+    "cv_folds.csv": "6513c201174a9113002bed071fa35860f2c3cce6c24ff1f9ae09dd0b58fbc9f5",
+    "cv_scores.csv": "75ab591d49473305f601e552067bfaca050485d5373a78ed16ee3d6c5cd2711b",
+    "embedding_manifest.json": "91d5daaabfb5f51a2f3d2bef3f2eb3a6136b3eeb325a8a78a57ac7a1e097f8e5",
+    "intervals.csv": "90be1d7c6d97c4d9ad82c17685fe7428ec082a30e03d16c5894111ddaf1e3fcf",
+    "paired_differences.csv": "3ea6f0cf0907b7beeb49e471ace2f44c8bb5b6136ff8622fad81255bcaadf794",
+    "selected_oof_predictions.csv": "ecd3d2b18cc1433995be1973242bcc76edccc5f494a73ef6b5c18fbe98de5ed5"
+  },
+  "prepared_at_utc": "2026-11-03T02:26:46.572532+00:00",
+  "protocol": {
+    "baseline_C": 0.1,
+    "bootstrap": {
+      "draws": 2000,
+      "interval": "2.5th and 97.5th percentiles of pooled out-of-fold metrics and paired differences",
+      "seed": 42,
+      "shared_draws": true,
+      "unit": "whole frozen sequence families"
+    },
+    "candidate_training_identities": 442,
+    "cv": {
+      "folds": 5,
+      "method": "StratifiedGroupKFold on the 442 candidate identities; identical folds for every arm; related sequences and amidation variants share group IDs",
+      "seed": 42
+    },
+    "dataset": "results/development/training-note-review-v2-aa4e6dde763ec03f/training_candidates.csv",
+    "dataset_sha256": "1fcf1b63164a6b98c9cd10f634d9c46cc80224af46528177e3b108be0cf05e54",
+    "embedding_C_grid": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "exact_probability_tie": "inactive",
+    "fit_scope": "Original arm fits only original-ready rows in each training fold; expanded arms fit all training-fold rows. All arms score the same 442 validation identities.",
+    "heldout_outcome_files_allowed": false,
+    "limitations": [
+      "Selected development scores are conditional on tuning and reused training data; not unbiased final test estimates.",
+      "The evaluated v1 test and clinical sets are not used to select a v2 model.",
+      "Pretraining overlap with published proteins/peptides is not audited.",
+      "A new independent evaluation is required before claiming improved final performance."
+    ],
+    "metrics": [
+      "balanced_accuracy",
+      "accuracy",
+      "roc_auc",
+      "average_precision",
+      "sensitivity",
+      "specificity"
+    ],
+    "model_arms": [
+      "charge_original_training",
+      "charge_expanded_training",
+      "esm2_expanded_training"
+    ],
+    "model_id": "facebook/esm2_t6_8M_UR50D",
+    "model_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+    "original_training_identities": 394,
+    "prediction_threshold": 0.5,
+    "preprocessing": "StandardScaler fit inside each fold; no PCA; L2 lbfgs logistic regression with max_iter 5000; no class weights",
+    "representation": "last hidden layer; arithmetic mean over residue tokens only; append amidation flag; encoder frozen",
+    "review_report": "results/development/training-note-review-v2-aa4e6dde763ec03f/review_report.json",
+    "review_report_sha256": "c519577e25766ea5fb4e078acade888a8dd47daf5915e20d86fa8d24aca8fe46",
+    "selection": "Embedding C selected by mean fold balanced accuracy; ties favor smaller C; fixed charge C=0.1",
+    "sources": [
+      "https://huggingface.co/facebook/esm2_t6_8M_UR50D",
+      "https://github.com/facebookresearch/esm"
+    ],
+    "version": "esm2-training-comparison-v2"
+  },
+  "scope": "Selected training-only development predictions; no final test improvement estimated",
+  "selected": {
+    "charge_expanded_training": {
+      "C": 0.1,
+      "cv": {
+        "accuracy": {
+          "mean": 0.7382334713347414,
+          "std_across_folds": 0.047207048383686515
+        },
+        "average_precision": {
+          "mean": 0.7824129698963772,
+          "std_across_folds": 0.04477611347672355
+        },
+        "balanced_accuracy": {
+          "mean": 0.7330093770958432,
+          "std_across_folds": 0.03850864678989507
+        },
+        "mcc": {
+          "mean": 0.47812637029233007,
+          "std_across_folds": 0.09602646804462188
+        },
+        "roc_auc": {
+          "mean": 0.7587690767794151,
+          "std_across_folds": 0.05796474752888447
+        },
+        "sensitivity": {
+          "mean": 0.7728916797488226,
+          "std_across_folds": 0.12479789012946454
+        },
+        "specificity": {
+          "mean": 0.6931270744428639,
+          "std_across_folds": 0.08467881740214535
+        }
+      },
+      "features": 2,
+      "pooled_oof": {
+        "accuracy": 0.7375565610859729,
+        "average_precision": 0.7773696246834804,
+        "balanced_accuracy": 0.7323541666666666,
+        "fn": 57,
+        "fp": 59,
+        "mcc": 0.46529031018421474,
+        "roc_auc": 0.7528854166666666,
+        "sensitivity": 0.772,
+        "specificity": 0.6927083333333334,
+        "tn": 133,
+        "tp": 193
+      }
+    },
+    "charge_original_training": {
+      "C": 0.1,
+      "cv": {
+        "accuracy": {
+          "mean": 0.7382334713347414,
+          "std_across_folds": 0.047207048383686515
+        },
+        "average_precision": {
+          "mean": 0.7814701503251096,
+          "std_across_folds": 0.04429141569388037
+        },
+        "balanced_accuracy": {
+          "mean": 0.7330093770958432,
+          "std_across_folds": 0.03850864678989507
+        },
+        "mcc": {
+          "mean": 0.47812637029233007,
+          "std_across_folds": 0.09602646804462188
+        },
+        "roc_auc": {
+          "mean": 0.7592103343635298,
+          "std_across_folds": 0.058309871574098344
+        },
+        "sensitivity": {
+          "mean": 0.7728916797488226,
+          "std_across_folds": 0.12479789012946454
+        },
+        "specificity": {
+          "mean": 0.6931270744428639,
+          "std_across_folds": 0.08467881740214535
+        }
+      },
+      "features": 2,
+      "pooled_oof": {
+        "accuracy": 0.7375565610859729,
+        "average_precision": 0.7756440937508391,
+        "balanced_accuracy": 0.7323541666666666,
+        "fn": 57,
+        "fp": 59,
+        "mcc": 0.46529031018421474,
+        "roc_auc": 0.7524270833333334,
+        "sensitivity": 0.772,
+        "specificity": 0.6927083333333334,
+        "tn": 133,
+        "tp": 193
+      }
+    },
+    "esm2_expanded_training": {
+      "C": 10.0,
+      "cv": {
+        "accuracy": {
+          "mean": 0.7422515032361958,
+          "std_across_folds": 0.025093926239584466
+        },
+        "average_precision": {
+          "mean": 0.806115560094011,
+          "std_across_folds": 0.05766237386269796
+        },
+        "balanced_accuracy": {
+          "mean": 0.7381135918203587,
+          "std_across_folds": 0.027870917871033896
+        },
+        "mcc": {
+          "mean": 0.478777602731959,
+          "std_across_folds": 0.05564202641571511
+        },
+        "roc_auc": {
+          "mean": 0.7664571387259357,
+          "std_across_folds": 0.0415456558847054
+        },
+        "sensitivity": {
+          "mean": 0.7716420722135008,
+          "std_across_folds": 0.05432238520327863
+        },
+        "specificity": {
+          "mean": 0.7045851114272167,
+          "std_across_folds": 0.07808476312094523
+        }
+      },
+      "features": 321,
+      "pooled_oof": {
+        "accuracy": 0.7420814479638009,
+        "average_precision": 0.7997105857649133,
+        "balanced_accuracy": 0.7375625,
+        "fn": 57,
+        "fp": 57,
+        "mcc": 0.475125,
+        "roc_auc": 0.7678541666666666,
+        "sensitivity": 0.772,
+        "specificity": 0.703125,
+        "tn": 135,
+        "tp": 193
+      }
+    }
+  },
+  "spec": {
+    "baseline_helper_sha256": "9e84020f8aa9fc2cfec2bf310b8e98b19357b3893b4802fd8b08de46c8257764",
+    "comparison_helper_sha256": "688811566fbf7f949b0b290ac979dc308d62043251dc82f42ecdab9a973a9a7d",
+    "embedding_manifest_sha256": "ad9145d2ff47321c9adc42df927dbee52c2542950d95d6207c16cb8e88b69472",
+    "environment": {
+      "joblib": "1.5.3",
+      "numpy": "2.3.5",
+      "python": "3.12.14",
+      "scikit-learn": "1.8.0",
+      "scipy": "1.17.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "protocol_sha256": "67826b0b9025a90c49ab6f751ef6be30f185af4ac876c268e3a5002eda6bb00e",
+    "review_helper_sha256": "3f469c8547d9a9d33a0b63533f6d6d88d43f2074620f00b1dddf93b3361516de",
+    "runner_sha256": "98f8688ee9453963c47f14f46740169b9c16a09f49e5e49c055f5a80c70d6437"
+  },
+  "v1_model_changed": false
+}
