@@ -1,0 +1,98 @@
+{
+  "accuracy_improvement_estimated": false,
+  "counts": {
+    "active": 250,
+    "candidate_training_groups": 267,
+    "candidate_training_identities": 442,
+    "candidate_training_sequences": 439,
+    "identity_statuses": {
+      "active": 250,
+      "ambiguous": 11,
+      "inactive": 192,
+      "mixed": 41,
+      "needs_note_review": 145
+    },
+    "inactive": 192,
+    "initial_pending_measurements": 249,
+    "newly_eligible_identities": 48,
+    "original_training_identities": 394,
+    "remaining_pending_measurements": 180,
+    "reviewed_measurements": 69,
+    "training_family_audit_identities": 639
+  },
+  "evaluation_limit": "v1 holdouts are already evaluated; a future performance claim requires new independent evaluation",
+  "heldout_classifier_csvs_opened": [],
+  "models_fitted": false,
+  "original_32_uM_replay_matches": true,
+  "original_ready_labels_preserved": true,
+  "output_sha256": {
+    "initial_review_queue.csv": "abea7e2b3b0035aa7879f3fc9327bbbdac4529aa7c0fa4088048ff5e3abaf759",
+    "remaining_review_queue.csv": "4892916f924a7e82fb2d103b9b272e55a7fff12679109ea0c364ac9163b04af9",
+    "training_audit.csv": "75cd6471aded41421b97b6ecd9ae6b6340ce374cb37570b8c012dec03d6a7bfb",
+    "training_candidates.csv": "1fcf1b63164a6b98c9cd10f634d9c46cc80224af46528177e3b108be0cf05e54"
+  },
+  "prepared_at_utc": "2026-11-03T02:14:38.000493+00:00",
+  "review_scope": "DBAASP note annotations; no claim of original-publication verification",
+  "spec": {
+    "scope": "frozen training-assigned families only; annotation review under unchanged broad labeling rules",
+    "source_sha256": {
+      "build_report": "ae17f9341706b74f2eea76a61ed59a6975fc73510ca74b3720fe81e5c3c7db2c",
+      "cohort_broad_audit.csv": "23abf84262af77aa9303a2b94aaf23d1fc85eaf94eff8a25ea69bc1ff8de822f",
+      "cohort_broad_candidates.csv": "76ac111af2a6e948f9b0947df8ece963d06183f2805380be319cfd714adef15c",
+      "cohort_clinical_only_candidates.csv": "dbe5d009622c0c79b6652eae95a56ab9fa079d26e975234ec5c993baf1bf53c2",
+      "data_utils": "4b475eb13dd264a810827a9580d70ee9f24df660300301923ed479e66ff8895a",
+      "label_script": "6a70b65d5049973661cf9ff150a8668fad0389d524a08f7a300d562b5b268615",
+      "measurements": "3c80a9cb07d933aed5e358735661e00e41f472ec62dd3e8594ef37df36b6458d",
+      "new_reviews": "a4bf95bb23ff4df4abe6ff071c0c11cf75b630618194059a4a086f0bf100f4ba",
+      "original_reviews": "24f0e3404f5a4266ffd8dbf3e25e4021e9d3d8d24b751fb91695792b5cb62cb3",
+      "original_train": "9e5461de996dc8bbb34f4bf36ac069b0a8a24ad2f8ecb3f24a5721734a49ffa1",
+      "provenance_report": "7d8c82d64a7987d35efcf8cd158f00c334f444658d48717bb92b238dcc9a0e2d",
+      "provenance_script": "48a09be585592d71a0f745e0f42e841ee7aa97978a0578d281f78f55adbc1834",
+      "review_script": "3f469c8547d9a9d33a0b63533f6d6d88d43f2074620f00b1dddf93b3361516de",
+      "sensitivity_helper": "59c9f8a8f402c596c3b058fb3ba703727a0c88a9d6650ebb3be51ef4fd9a5cfc",
+      "sequence_groups": "09ebbc9e8d25ecb29245f69732aa4c9f8fc5934bc1f9607a17e1840f095addb9",
+      "split_assignments": "5e798e64a8a149c4825e86127932d439844011b86261c950298ae6c074076439",
+      "split_manifest": "5bc08d219cb6a86f801eb8d918bc9b6f25ce9875e7d627d31487093567a4e3a3",
+      "training_helper": "9e84020f8aa9fc2cfec2bf310b8e98b19357b3893b4802fd8b08de46c8257764"
+    },
+    "threshold_uM": 32,
+    "version": "training-note-review-v2"
+  },
+  "status_transitions": [
+    {
+      "after": "active",
+      "before": "active",
+      "identities": 217
+    },
+    {
+      "after": "ambiguous",
+      "before": "ambiguous",
+      "identities": 11
+    },
+    {
+      "after": "inactive",
+      "before": "inactive",
+      "identities": 177
+    },
+    {
+      "after": "mixed",
+      "before": "mixed",
+      "identities": 41
+    },
+    {
+      "after": "active",
+      "before": "needs_note_review",
+      "identities": 33
+    },
+    {
+      "after": "inactive",
+      "before": "needs_note_review",
+      "identities": 15
+    },
+    {
+      "after": "needs_note_review",
+      "before": "needs_note_review",
+      "identities": 145
+    }
+  ]
+}
