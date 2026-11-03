@@ -1,0 +1,62 @@
+{
+  "version": "esm2-training-comparison-v2",
+  "dataset": "results/development/training-note-review-v2-aa4e6dde763ec03f/training_candidates.csv",
+  "dataset_sha256": "1fcf1b63164a6b98c9cd10f634d9c46cc80224af46528177e3b108be0cf05e54",
+  "review_report": "results/development/training-note-review-v2-aa4e6dde763ec03f/review_report.json",
+  "review_report_sha256": "c519577e25766ea5fb4e078acade888a8dd47daf5915e20d86fa8d24aca8fe46",
+  "original_training_identities": 394,
+  "candidate_training_identities": 442,
+  "model_id": "facebook/esm2_t6_8M_UR50D",
+  "model_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+  "representation": "last hidden layer; arithmetic mean over residue tokens only; append amidation flag; encoder frozen",
+  "model_arms": [
+    "charge_original_training",
+    "charge_expanded_training",
+    "esm2_expanded_training"
+  ],
+  "baseline_C": 0.1,
+  "embedding_C_grid": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "cv": {
+    "folds": 5,
+    "seed": 42,
+    "method": "StratifiedGroupKFold on the 442 candidate identities; identical folds for every arm; related sequences and amidation variants share group IDs"
+  },
+  "fit_scope": "Original arm fits only original-ready rows in each training fold; expanded arms fit all training-fold rows. All arms score the same 442 validation identities.",
+  "preprocessing": "StandardScaler fit inside each fold; no PCA; L2 lbfgs logistic regression with max_iter 5000; no class weights",
+  "selection": "Embedding C selected by mean fold balanced accuracy; ties favor smaller C; fixed charge C=0.1",
+  "prediction_threshold": 0.5,
+  "exact_probability_tie": "inactive",
+  "metrics": [
+    "balanced_accuracy",
+    "accuracy",
+    "roc_auc",
+    "average_precision",
+    "sensitivity",
+    "specificity"
+  ],
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 42,
+    "unit": "whole frozen sequence families",
+    "shared_draws": true,
+    "interval": "2.5th and 97.5th percentiles of pooled out-of-fold metrics and paired differences"
+  },
+  "limitations": [
+    "Selected development scores are conditional on tuning and reused training data; not unbiased final test estimates.",
+    "The evaluated v1 test and clinical sets are not used to select a v2 model.",
+    "Pretraining overlap with published proteins/peptides is not audited.",
+    "A new independent evaluation is required before claiming improved final performance."
+  ],
+  "heldout_outcome_files_allowed": false,
+  "sources": [
+    "https://huggingface.co/facebook/esm2_t6_8M_UR50D",
+    "https://github.com/facebookresearch/esm"
+  ]
+}

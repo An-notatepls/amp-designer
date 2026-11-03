@@ -38,8 +38,8 @@ merely to display the notebook.
 ./.venv/bin/python tools/verify_release.py
 ```
 
-There are 70 tests, including eight release checks and six v2 training-review
-checks. Fixtures are synthetic
+There are 77 tests, including eight release checks, six v2 training-review
+checks and seven offline embedding-workflow checks. Fixtures are synthetic
 except frozen-artifact integrity checks and an isolated invocation of the
 committed portable model with its recorded synthetic syntax-example prediction.
 The verifier checks the exact frozen partitions, provenance inputs, source
@@ -166,6 +166,8 @@ fits a model or rewrites the frozen source reports.
 The completed v1 remains frozen. A versioned note-review overlay and a new
 training-only candidate build are described in [the v2 guide](training_v2.md).
 The new candidate table is not a replacement for any original split file.
+The [embedding experiment](embedding_v2.md) has a separate optional environment
+and a model download; ordinary tests do not download or import an encoder.
 
 ## Level 3: best-effort DBAASP rebuild
 

@@ -98,17 +98,18 @@ this report and construct group-aware development folds explicitly.
 
 ## How we will judge the next model
 
-Next, compare a charge-and-amidation baseline with an embedding-based model
-using shared training-family validation folds. Keep amidation as a separate
-feature because amino-acid embeddings alone do not represent that modification.
-If additional training rows are used, compare both models on the same rows;
-otherwise a feature comparison would also be a dataset-size comparison.
+A first charge-and-amidation versus embedding comparison has now been run
+using shared training-family validation folds. See [the embedding experiment](embedding_v2.md)
+for its results and separate reproduction environment. Amidation remains a
+separate feature because amino-acid embeddings do not represent that modification.
+The comparison evaluates every arm on the same rows, separating the additional
+training-data effect from the representation effect.
 
-Choose the embedding model, pooling method, regularization search and fold
-allocation before viewing their validation results. Fit scalers and any
-dimensionality reduction inside each fold. Report accuracy, balanced accuracy,
-AUROC and uncertainty, and distinguish selected development scores from final
-evaluation. More examples or a larger model do not guarantee better predictions.
+The embedding model, pooling method, regularization search and fold allocation
+were recorded before viewing validation results. Scaling was fitted inside each
+fold. The report includes accuracy, balanced accuracy, AUROC and uncertainty,
+and distinguishes selected development scores from final evaluation. More
+examples or a larger model do not guarantee better predictions.
 
 The v1 test and clinical sets have already been evaluated. They are historical
 results, not fresh blind tests for v2. A convincing final claim of improvement
