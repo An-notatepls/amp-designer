@@ -1,0 +1,13 @@
+model,previous_model,metric,estimate,low,high
+charge_expanded_training,charge_original_training,balanced_accuracy,0.0,0.0,0.0
+charge_expanded_training,charge_original_training,roc_auc,0.00045833333333322734,-0.0032679287170255117,0.004453795294642387
+charge_expanded_training,charge_original_training,average_precision,0.0017255309326412727,-0.003127141463565614,0.006663733896032491
+charge_expanded_training,charge_original_training,accuracy,0.0,0.0,0.0
+charge_expanded_training,charge_original_training,sensitivity,0.0,0.0,0.0
+charge_expanded_training,charge_original_training,specificity,0.0,0.0,0.0
+esm2_expanded_training,charge_expanded_training,balanced_accuracy,0.00520833333333337,-0.054427985317508955,0.06342078927899288
+esm2_expanded_training,charge_expanded_training,roc_auc,0.014968749999999975,-0.05775810622910783,0.08852356431009346
+esm2_expanded_training,charge_expanded_training,average_precision,0.02234096108143291,-0.03933726927408569,0.08195362412500004
+esm2_expanded_training,charge_expanded_training,accuracy,0.004524886877828038,-0.06006057567386886,0.06681555822620128
+esm2_expanded_training,charge_expanded_training,sensitivity,0.0,-0.11032823502687966,0.10441916921417008
+esm2_expanded_training,charge_expanded_training,specificity,0.01041666666666663,-0.06250818062827225,0.0791003513848698

@@ -1,0 +1,4 @@
+# Separate embedding environment; keep the frozen v1 environment unchanged.
+-r requirements-diagnostics.txt
+transformers==4.57.1
+torch==2.9.1
